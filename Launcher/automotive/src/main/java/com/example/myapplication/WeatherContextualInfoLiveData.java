@@ -33,7 +33,7 @@ class WeatherContextualInfoLiveData extends LiveData<ContextualInfo> {
     }
 
     private CharSequence getGreeting() {
-        UserManager userManager = UserManager.get(mContext);
+        UserManager userManager = (UserManager) mContext.getSystemService((Context.USER_SERVICE));
         String userName = userManager.getUserName();
 
         if (userName != null) {

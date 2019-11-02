@@ -15,7 +15,7 @@
  */
 package com.example.myapplication;
 
-import android.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.app.Activity;
 import android.car.Car;
 import android.car.CarNotConnectedException;
@@ -150,7 +150,7 @@ public final class AppSearchActivity extends Activity {
 
     @Override
     protected void onStop() {
-        super.onPause();
+        super.onStop();
         // disconnect from app install/uninstall receiver
         if (mInstallUninstallReceiver != null) {
             unregisterReceiver(mInstallUninstallReceiver);

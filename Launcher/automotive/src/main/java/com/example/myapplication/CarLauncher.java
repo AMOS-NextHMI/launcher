@@ -17,7 +17,6 @@
 package com.example.myapplication;
 
 
-
 import android.app.ActivityManager;
 import android.app.ActivityOptions;
 import android.app.ActivityView;
@@ -35,9 +34,14 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.android.car.carlauncher.R;
-import com.android.car.media.common.PlaybackFragment;
+import androidx.leanback.app.PlaybackSupportFragment;
 
 import java.util.Set;
+
+/**
+ * Note by Wolf Lickefett: the ActivityView does not seem to be documented
+ * but should exist in the android project
+ */
 
 /**
  * Basic Launcher for Android Automotive which demonstrates the use of {@link ActivityView} to host
@@ -77,7 +81,6 @@ public class CarLauncher extends FragmentActivity {
                     mActivityViewReady = false;
                 }
 
-                @Override
                 public void onTaskMovedToFront(int taskId) {
                     try {
                         if (mIsStarted) {
@@ -111,6 +114,7 @@ public class CarLauncher extends FragmentActivity {
 
     @Override
     protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
         Set<String> categories = intent.getCategories();
         if (categories != null && categories.size() == 1 && categories.contains(
                 Intent.CATEGORY_APP_MAPS)) {
@@ -151,7 +155,7 @@ public class CarLauncher extends FragmentActivity {
             return;
         }
         if (mActivityView != null) {
-            mActivityView.startActivity(getMapsIntent());
+            mActivityView.startActivity(getMapsIntent(), null);
         }
     }
 
@@ -174,7 +178,7 @@ public class CarLauncher extends FragmentActivity {
     }
 
     private void initializeFragments() {
-        PlaybackFragment playbackFragment = new PlaybackFragment();
+        PlaybackSupportFragment playbackFragment = new PlaybackSupportFragment();
         ContextualFragment contextualFragment = null;
         FrameLayout contextual = findViewById(R.id.contextual);
         if(contextual != null) {

@@ -16,7 +16,7 @@
 
 package com.example.myapplication;
 
-import android.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.app.ActivityOptions;
 import android.car.Car;
 import android.car.CarNotConnectedException;
@@ -32,6 +32,7 @@ import android.os.Process;
 import android.service.media.MediaBrowserService;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Display;
 
 import androidx.annotation.NonNull;
 
@@ -67,7 +68,8 @@ class AppLauncherUtils {
      */
     static void launchApp(Context context, AppMetaData app) {
         ActivityOptions options = ActivityOptions.makeBasic();
-        options.setLaunchDisplayId(context.getDisplayId());
+        // before: options.setLaunchDisplayId(context.getDisplayId());
+        options.setLaunchDisplayId(Display.DEFAULT_DISPLAY);
         context.startActivity(app.getMainLaunchIntent(), options.toBundle());
     }
 
@@ -182,7 +184,8 @@ class AppLauncherUtils {
                 final boolean isDistractionOptimized = true;
 
                 Intent intent = new Intent(Car.CAR_INTENT_ACTION_MEDIA_TEMPLATE);
-                intent.putExtra(Car.CAR_EXTRA_MEDIA_COMPONENT, componentName.flattenToString());
+                // before: intent.putExtra(Car.CAR_EXTRA_MEDIA_COMPONENT, componentName.flattenToString());
+                intent.putExtra(Car.CAR_EXTRA_MEDIA_PACKAGE, componentName.flattenToString());
 
                 AppMetaData appMetaData = new AppMetaData(
                         info.serviceInfo.loadLabel(packageManager),

@@ -16,7 +16,7 @@
 
 package com.example.myapplication;
 
-import android.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;

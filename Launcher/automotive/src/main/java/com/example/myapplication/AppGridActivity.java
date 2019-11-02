@@ -16,10 +16,11 @@
 
 package com.example.myapplication;
 
-import android.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.app.Activity;
 import android.app.usage.UsageStats;
 import android.app.usage.UsageStatsManager;
+import android.car.Car;
 import android.car.CarNotConnectedException;
 import android.car.content.pm.CarPackageManager;
 import android.car.drivingstate.CarUxRestrictionsManager;
@@ -42,8 +43,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.car.carlauncher.AppLauncherUtils.LauncherAppsInfo;
 import com.android.car.carlauncher.R;
+import com.example.myapplication.AppLauncherUtils.LauncherAppsInfo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -178,7 +179,7 @@ public final class AppGridActivity extends Activity {
 
     @Override
     protected void onStop() {
-        super.onPause();
+        super.onStop();
         // disconnect from app install/uninstall receiver
         if (mInstallUninstallReceiver != null) {
             unregisterReceiver(mInstallUninstallReceiver);
@@ -230,7 +231,7 @@ public final class AppGridActivity extends Activity {
         int itemCount = Math.min(mColumnNumber, statsSize);
         while (itemsAdded < itemCount && currentIndex < statsSize) {
             UsageStats usageStats = stats.get(currentIndex);
-            String packageName = usageStats.mPackageName;
+            String packageName = usageStats.getPackageName();
             currentIndex++;
 
             // do not include self

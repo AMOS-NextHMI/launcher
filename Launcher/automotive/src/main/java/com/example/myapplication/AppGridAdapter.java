@@ -16,7 +16,7 @@
 
 package com.example.myapplication;
 
-import android.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

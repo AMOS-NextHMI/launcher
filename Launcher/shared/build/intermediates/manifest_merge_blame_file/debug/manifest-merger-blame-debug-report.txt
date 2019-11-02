@@ -6,18 +6,18 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="28"
-8-->/Users/ferielamira/AndroidStudioProjects/MyApplication4/shared/src/main/AndroidManifest.xml
+8-->/home/wolf/uni/ws2019/amos/launcher/Launcher/shared/src/main/AndroidManifest.xml
 9        android:targetSdkVersion="29" />
-9-->/Users/ferielamira/AndroidStudioProjects/MyApplication4/shared/src/main/AndroidManifest.xml
+9-->/home/wolf/uni/ws2019/amos/launcher/Launcher/shared/src/main/AndroidManifest.xml
 10
 11    <application>
-11-->/Users/ferielamira/AndroidStudioProjects/MyApplication4/shared/src/main/AndroidManifest.xml:4:5-22:19
+11-->/home/wolf/uni/ws2019/amos/launcher/Launcher/shared/src/main/AndroidManifest.xml:4:5-22:19
 12        <meta-data
-12-->/Users/ferielamira/AndroidStudioProjects/MyApplication4/shared/src/main/AndroidManifest.xml:6:9-8:59
+12-->/home/wolf/uni/ws2019/amos/launcher/Launcher/shared/src/main/AndroidManifest.xml:6:9-8:59
 13            android:name="com.google.android.gms.car.application"
-13-->/Users/ferielamira/AndroidStudioProjects/MyApplication4/shared/src/main/AndroidManifest.xml:7:13-66
+13-->/home/wolf/uni/ws2019/amos/launcher/Launcher/shared/src/main/AndroidManifest.xml:7:13-66
 14            android:resource="@xml/automotive_app_desc" />
-14-->/Users/ferielamira/AndroidStudioProjects/MyApplication4/shared/src/main/AndroidManifest.xml:8:13-56
+14-->/home/wolf/uni/ws2019/amos/launcher/Launcher/shared/src/main/AndroidManifest.xml:8:13-56
 15
 16        <!--
 17         Main music service, provides media browsing and media playback services to
@@ -25,16 +25,16 @@
 19         MediaBrowser (for browsing) and MediaController (for playback control)
 20        -->
 21        <service
-21-->/Users/ferielamira/AndroidStudioProjects/MyApplication4/shared/src/main/AndroidManifest.xml:14:9-20:19
+21-->/home/wolf/uni/ws2019/amos/launcher/Launcher/shared/src/main/AndroidManifest.xml:14:9-20:19
 22            android:name="com.example.myapplication.shared.MyMusicService"
-22-->/Users/ferielamira/AndroidStudioProjects/MyApplication4/shared/src/main/AndroidManifest.xml:15:13-75
+22-->/home/wolf/uni/ws2019/amos/launcher/Launcher/shared/src/main/AndroidManifest.xml:15:13-75
 23            android:exported="true" >
-23-->/Users/ferielamira/AndroidStudioProjects/MyApplication4/shared/src/main/AndroidManifest.xml:16:13-36
+23-->/home/wolf/uni/ws2019/amos/launcher/Launcher/shared/src/main/AndroidManifest.xml:16:13-36
 24            <intent-filter>
-24-->/Users/ferielamira/AndroidStudioProjects/MyApplication4/shared/src/main/AndroidManifest.xml:17:13-19:29
+24-->/home/wolf/uni/ws2019/amos/launcher/Launcher/shared/src/main/AndroidManifest.xml:17:13-19:29
 25                <action android:name="android.media.browse.MediaBrowserService" />
-25-->/Users/ferielamira/AndroidStudioProjects/MyApplication4/shared/src/main/AndroidManifest.xml:18:17-83
-25-->/Users/ferielamira/AndroidStudioProjects/MyApplication4/shared/src/main/AndroidManifest.xml:18:25-80
+25-->/home/wolf/uni/ws2019/amos/launcher/Launcher/shared/src/main/AndroidManifest.xml:18:17-83
+25-->/home/wolf/uni/ws2019/amos/launcher/Launcher/shared/src/main/AndroidManifest.xml:18:25-80
 26            </intent-filter>
 27        </service>
 28    </application>
