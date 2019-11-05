@@ -1,2 +1,18 @@
+#generated files
 build/
 shared/
+bin/
+
+# java class files
+*.java
+
+# build application files
+*.apk
+*.ap_
+
+# OSX files
+.DS_Store
+
+# Android studio
+*.iml
+.idea
