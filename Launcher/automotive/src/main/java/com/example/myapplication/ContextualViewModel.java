@@ -21,9 +21,12 @@ import android.car.Car;
 import android.car.CarNotConnectedException;
 import android.car.CarProjectionManager;
 // import android.car.CarProjectionManager.ProjectionStatusListener;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.graphics.drawable.Drawable;
+import android.os.IBinder;
 import android.os.UserManager;
 
 import androidx.annotation.Nullable;
@@ -51,13 +54,23 @@ public class ContextualViewModel extends AndroidViewModel {
 
     private final List<LiveData<ContextualInfo>> mInfoDelegates;
 
-    public ContextualViewModel(Application application) {
+    public ContextualViewModel(Application application) throws CarNotConnectedException{
         this(application, getCarProjectionManager(application));
     }
 
-    private static CarProjectionManager getCarProjectionManager(Context context) {
+    private static CarProjectionManager getCarProjectionManager(Context context) throws CarNotConnectedException {
         return (CarProjectionManager)
-                Car.createCar(context).getCarManager(Car.PROJECTION_SERVICE);
+                Car.createCar(context, new ServiceConnection() {
+                    @Override
+                    public void onServiceConnected(ComponentName name, IBinder service) {
+
+                    }
+
+                    @Override
+                    public void onServiceDisconnected(ComponentName name) {
+
+                    }
+                }).getCarManager(Car.PROJECTION_SERVICE);
     }
 
     @VisibleForTesting
