@@ -1,3 +1,4 @@
+/*
 package com.example.myapplication;
 
 import android.car.CarProjectionManager;
@@ -15,7 +16,9 @@ import com.android.car.carlauncher.R;
 
 import java.util.List;
 
-/** A {@link LiveData} of {@link ContextualInfo} on projection status. */
+*/
+/** A {@link LiveData} of {@link ContextualInfo} on projection status. *//*
+
 class ProjectionContextualInfoLiveData extends LiveData<ContextualInfo>
         implements CarProjectionManager.ProjectionStatusListener {
     private static final String TAG = "ProjectionContext";
@@ -68,7 +71,9 @@ class ProjectionContextualInfoLiveData extends LiveData<ContextualInfo>
                         applicationInfo.loadIcon(pm),
                         applicationInfo.loadLabel(pm),
                         getStatusMessage(packageName, details),
-                        /* showClock= */ false,
+                        */
+/* showClock= *//*
+ false,
                         pm.getLaunchIntentForPackage(packageName)));
     }
 
@@ -123,3 +128,4 @@ class ProjectionContextualInfoLiveData extends LiveData<ContextualInfo>
         }
     }
 }
+*/
