@@ -20,7 +20,7 @@ import android.app.Application;
 import android.car.Car;
 import android.car.CarNotConnectedException;
 import android.car.CarProjectionManager;
-import android.car.CarProjectionManager.ProjectionStatusListener;
+// import android.car.CarProjectionManager.ProjectionStatusListener;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -67,7 +67,7 @@ public class ContextualViewModel extends AndroidViewModel {
 
         mInfoDelegates =
                 Collections.unmodifiableList(Arrays.asList(
-                        new ProjectionContextualInfoLiveData(application, carProjectionManager),
+                        // new ProjectionContextualInfoLiveData(application, carProjectionManager),
                         new WeatherContextualInfoLiveData(application)
                 ));
 
