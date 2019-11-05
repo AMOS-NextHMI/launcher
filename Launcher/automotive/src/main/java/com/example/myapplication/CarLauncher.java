@@ -19,8 +19,10 @@ package com.example.myapplication;
 
 import android.app.ActivityManager;
 import android.app.ActivityOptions;
+
 import android.app.ActivityView;
 import android.app.UserSwitchObserver;
+
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
