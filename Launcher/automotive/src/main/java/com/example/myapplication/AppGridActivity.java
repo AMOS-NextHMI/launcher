@@ -16,7 +16,6 @@
 
 package com.example.myapplication;
 
-import androidx.annotation.Nullable;
 import android.app.Activity;
 import android.app.usage.UsageStats;
 import android.app.usage.UsageStatsManager;
@@ -39,6 +38,7 @@ import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.View;
 
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup;
 import androidx.recyclerview.widget.RecyclerView;
@@ -205,6 +205,7 @@ public final class AppGridActivity extends Activity {
     private List<AppMetaData> getMostRecentApps(LauncherAppsInfo appsInfo) {
         ArrayList<AppMetaData> apps = new ArrayList<>();
         if (appsInfo.isEmpty()) {
+
             return apps;
         }
 

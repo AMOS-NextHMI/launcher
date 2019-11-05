@@ -19,24 +19,18 @@ package com.example.myapplication;
 
 import android.app.ActivityManager;
 import android.app.ActivityOptions;
-
 import android.app.ActivityView;
-import android.app.UserSwitchObserver;
-
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-
-import android.os.IRemoteCallback;
-import android.os.RemoteException;
 import android.util.Log;
 import android.widget.FrameLayout;
 
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.leanback.app.PlaybackSupportFragment;
 
 import com.android.car.carlauncher.R;
-import androidx.leanback.app.PlaybackSupportFragment;
 
 import java.util.Set;
 

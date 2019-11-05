@@ -20,29 +20,23 @@ import android.app.Application;
 import android.car.Car;
 import android.car.CarNotConnectedException;
 import android.car.CarProjectionManager;
-// import android.car.CarProjectionManager.ProjectionStatusListener;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
 import android.content.ServiceConnection;
-import android.graphics.drawable.Drawable;
 import android.os.IBinder;
-import android.os.UserManager;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
+
+// import android.car.CarProjectionManager.ProjectionStatusListener;
 
 /**
  * Implementation {@link ViewModel} for {@link ContextualFragment}.
