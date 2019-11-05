@@ -144,7 +144,7 @@ public class CarLauncher extends FragmentActivity {
     protected void onDestroy() {
         super.onDestroy();
         if (mActivityView != null && mActivityViewReady) {
-            mActivityView.release();
+            // mActivityView.release();
         }
     }
 
@@ -163,7 +163,8 @@ public class CarLauncher extends FragmentActivity {
         // Make sure the Activity launches on the current display instead of in the ActivityView
         // virtual display.
         final ActivityOptions options = ActivityOptions.makeBasic();
-        options.setLaunchDisplayId(getDisplay().getDisplayId());
+        //options.setLaunchDisplayId(getDisplay().getDisplayId());
+        options.setLaunchDisplayId(0);
         startActivity(getMapsIntent(), options.toBundle());
     }
 
