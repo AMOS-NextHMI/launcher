@@ -13,6 +13,7 @@ import java.util.Locale;
  * {@link android.R.styleable#TextClock_format24Hour} and applies the best format as determined by
  * {@link DateFormat#getBestDateTimePattern(Locale, String)}.
  */
+
 public class LocalizedTextClock extends TextClock {
 
     public LocalizedTextClock(Context context) {
