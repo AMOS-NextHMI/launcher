@@ -14,9 +14,10 @@
   See the License for the specific language governing permissions and
   limitations under the License.
   -->
-
+<!--<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.android.car.carlauncher"  android:sharedUserId="android.uid.system">-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.android.car.carlauncher"  android:sharedUserId="android.uid.system">
+    package="com.android.car.carlauncher">
     <!-- System permission to get app usage data -->
     <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"/>
     <!-- System permission to send events to hosted maps activity -->
