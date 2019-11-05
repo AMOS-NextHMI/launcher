@@ -1,6 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
+
+    useLibrary 'android.car'
+    useLibrary 'android.hidden'
+
     compileSdkVersion 29
 
 
