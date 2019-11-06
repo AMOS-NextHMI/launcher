@@ -42,7 +42,6 @@ public class ContextualFragment extends Fragment {
         View dateDividerView = rootView.findViewById(R.id.date_divider);
         View dateView = rootView.findViewById(R.id.date);
         View bottomLineContainerView = rootView.findViewById(R.id.bottom_line_container);
-
         ContextualViewModel viewModel = ViewModelProviders.of(this).get(ContextualViewModel.class);
 
         viewModel.getContextualInfo().observe(this, info -> {

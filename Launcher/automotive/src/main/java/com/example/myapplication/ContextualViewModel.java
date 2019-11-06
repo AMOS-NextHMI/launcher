@@ -25,16 +25,10 @@ import android.content.Context;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 
-import androidx.annotation.VisibleForTesting;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 // import android.car.CarProjectionManager.ProjectionStatusListener;
 
@@ -46,13 +40,18 @@ import java.util.List;
 public class ContextualViewModel extends AndroidViewModel {
     private final MediatorLiveData<ContextualInfo> mContextualInfo = new MediatorLiveData<>();
 
-    private final List<LiveData<ContextualInfo>> mInfoDelegates;
+    //private final List<LiveData<ContextualInfo>> mInfoDelegates;
 
     public ContextualViewModel(Application application) throws CarNotConnectedException{
-        this(application, getCarProjectionManager(application));
+        super(application);
+       // this(application, getCarProjectionManager(application));
     }
 
+
+
+
     private static CarProjectionManager getCarProjectionManager(Context context) throws CarNotConnectedException {
+
         return (CarProjectionManager)
                 Car.createCar(context, new ServiceConnection() {
                     @Override
@@ -67,8 +66,10 @@ public class ContextualViewModel extends AndroidViewModel {
                 }).getCarManager(Car.PROJECTION_SERVICE);
     }
 
-    @VisibleForTesting
+   /* @VisibleForTesting
     ContextualViewModel(Application application, CarProjectionManager carProjectionManager) {
+
+
         super(application);
 
 
@@ -95,6 +96,8 @@ public class ContextualViewModel extends AndroidViewModel {
 
         mContextualInfo.setValue(null);
     }
+
+*/
 
     public LiveData<ContextualInfo> getContextualInfo() {
         return mContextualInfo;
