@@ -125,7 +125,8 @@ public class CarLauncher extends FragmentActivity {
     }
 
     @Override
-    protected void onStart();
+    protected void onStart() {
+
         super.onStart();
 
         Log.d(TAG, "onStart: Hello World");
