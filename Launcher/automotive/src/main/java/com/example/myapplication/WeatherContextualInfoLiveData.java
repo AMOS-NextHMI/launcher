@@ -28,6 +28,8 @@ class WeatherContextualInfoLiveData extends LiveData<ContextualInfo> {
                         /* onClickActivity= */ null));
     }
 
+
+
     private Drawable getWeatherIcon() {
         return mContext.getDrawable(R.drawable.ic_partly_cloudy);
     }

@@ -44,7 +44,7 @@ public class ContextualViewModel extends AndroidViewModel {
 
     public ContextualViewModel(Application application) throws CarNotConnectedException{
         super(application);
-       // this(application, getCarProjectionManager(application));
+
     }
 
 

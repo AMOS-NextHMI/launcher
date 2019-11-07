@@ -16,10 +16,11 @@
 
 package com.example.myapplication;
 
-import androidx.annotation.Nullable;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+
+import androidx.annotation.Nullable;
 
 /**
  * Meta data of an app including the display name, the component name, the icon drawable, and an
