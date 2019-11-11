@@ -24,8 +24,10 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
@@ -58,7 +60,7 @@ import java.util.Set;
  * switching away from and back to the current user. To avoid a crash, this Activity will finish
  * when switching users.
  */
-public class CarLauncher extends FragmentActivity {
+public class CarLauncher extends FragmentActivity implements View.OnClickListener {
     private static final String TAG = "CarLauncher";
 
     private ActivityView mActivityView;
@@ -91,6 +93,10 @@ public class CarLauncher extends FragmentActivity {
                 }
             };
 
+    public void sendMessage(View view){
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,6 +115,7 @@ public class CarLauncher extends FragmentActivity {
         }
 
         Button myButton = (Button) findViewById(R.id.myButton);
+        myButton.setOnClickListener(this);
     }
 
     @Override
@@ -196,4 +203,19 @@ public class CarLauncher extends FragmentActivity {
         }
         fragmentTransaction.commitNow();
     }
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()) {
+            case R.id.myButton:
+                // Do something
+                TextView middleTextView = findViewById(R.id.middleText);
+//                middleTextView.setBackgroundColor("@color/red");
+                middleTextView.setBackgroundColor(123458);
+                middleTextView.setText("the middle text view\nindicates that the button\nwas pressed :)");
+
+        }
+    }
+
 }
