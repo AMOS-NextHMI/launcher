@@ -31,6 +31,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginStart="@dimen/icon_start_margin"
+            android:background="@color/green"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
@@ -55,6 +56,7 @@
             android:layout_marginStart="@dimen/icon_end_margin"
             android:layout_marginTop="@dimen/line_gap_margin"
             android:baselineAligned="true"
+            android:orientation="vertical"
             app:layout_constraintStart_toEndOf="@+id/icon"
             app:layout_constraintTop_toBottomOf="@+id/top_line"
             app:layout_constraintBottom_toBottomOf="parent">
@@ -64,13 +66,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
+                android:text="borf diddly"
                 android:maxLines="1"
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
 
             <TextView
                 android:id="@+id/date_divider"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="6dp"
                 android:text="&#x2502;"

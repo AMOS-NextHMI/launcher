@@ -24,6 +24,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.FrameLayout;
 
 import androidx.fragment.app.FragmentActivity;
@@ -106,6 +107,8 @@ public class CarLauncher extends FragmentActivity {
         if (mActivityView != null) {
             mActivityView.setCallback(mActivityViewCallback);
         }
+
+        Button myButton = (Button) findViewById(R.id.myButton);
     }
 
     @Override
@@ -129,6 +132,7 @@ public class CarLauncher extends FragmentActivity {
         super.onStart();
 
         Log.d(TAG, "onStart: Hello World");
+        System.out.println("hello again");
         mIsStarted = true;
     }
 
