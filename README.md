@@ -62,4 +62,4 @@ android {
 **You have to run the app via this method otherwise you will no obtain root permissions and get an error**
 
 1. You **have** to start the emulator via the buildAndRun script **otherwise the system is not writable** and you will get an error
-2. After the script started the emulator you can apply changes that you made in the code via the "Apply Changes and Restart Activity" (Ctrl+F10) **Do not press the usual "Run" Button, it will result in a premission error**
+2. After the script started the emulator you can apply changes that you made in the code via the "Apply Changes and Restart Activity" ![icon image](img/readme/apply-changes-and-run-activity.png) (Ctrl+F10) **Do not press the usual "Run" Button, it will result in a premission error**
