@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.car.Car
 import android.car.hardware.CarSensorManager
 import android.content.ComponentName
+import android.content.Intent
 import android.content.ServiceConnection
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
@@ -10,19 +11,32 @@ import android.os.Bundle
 import android.os.IBinder
 import android.util.Log
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import com.android.car.carlauncher.R
-
+import com.example.myapplication.TripCompFragment;
 class TripComp : AppCompatActivity() {
 
     private lateinit var car : Car
     private val permissions = arrayOf(Car.PERMISSION_SPEED)
+    private var tripCompFragment: TripCompFragment = TripCompFragment();
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        println("helllllloo yo");
         super.onCreate(savedInstanceState)
         setContentView(R.layout.comp_layout)
+        tripCompFragment.sourceValues("0","lol");
+//        val intent = Intent(this, TripComp::class.java)
+////        intent.putExtra("key", value)
+//        startActivity(intent)
 
         initCar()
     }
+
+    fun getFragment(): Fragment{
+        return this.tripCompFragment;
+    }
+
+
 
     override fun onResume() {
         super.onResume()
@@ -75,6 +89,7 @@ class TripComp : AppCompatActivity() {
 
         sensorManager.registerListener(
                 { carSensorEvent ->
+                    this.tripCompFragment.sourceValues(carSensorEvent.floatValues[0].toString(),"bla");
                     Log.d("MainActivity", "Speed: ${carSensorEvent.floatValues[0]}")
                     var speedTextView = findViewById<TextView>(R.id.speedTextView)
                     speedTextView.text = "Speed: " + carSensorEvent.floatValues[0].toString() + "km/h"
@@ -86,9 +101,6 @@ class TripComp : AppCompatActivity() {
                 },
                 CarSensorManager.SENSOR_TYPE_CAR_SPEED,
                 CarSensorManager.SENSOR_RATE_NORMAL
-
-
-
 
         )
     }

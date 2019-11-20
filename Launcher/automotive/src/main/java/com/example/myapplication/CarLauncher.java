@@ -22,6 +22,7 @@ import android.app.ActivityOptions;
 import android.app.ActivityView;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.filterfw.core.Frame;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -29,6 +30,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.leanback.app.PlaybackSupportFragment;
@@ -190,7 +192,9 @@ public class CarLauncher extends FragmentActivity implements View.OnClickListene
     private void initializeFragments() {
         PlaybackSupportFragment playbackFragment = new PlaybackSupportFragment();
         ContextualFragment contextualFragment = null;
+        TripComp tripComp = null;
         FrameLayout contextual = findViewById(R.id.contextual);
+        FrameLayout tripCompFrame = findViewById(R.id.tripComp);
         if(contextual != null) {
             contextualFragment = new ContextualFragment();
         }
@@ -200,6 +204,17 @@ public class CarLauncher extends FragmentActivity implements View.OnClickListene
         fragmentTransaction.replace(R.id.playback, playbackFragment);
         if(contextual != null) {
             fragmentTransaction.replace(R.id.contextual, contextualFragment);
+        }
+        if (tripCompFrame != null){
+            System.out.println("trying to create a thang");
+            tripComp = new TripComp();
+            System.out.println("created perhaps a thang");
+        }
+        if (tripComp != null){
+            Fragment f = tripComp.getFragment();
+            System.out.println(f);
+            System.out.println("just printed the fragment lol");
+            fragmentTransaction.replace(R.id.tripComp, f);
         }
         fragmentTransaction.commitNow();
     }
