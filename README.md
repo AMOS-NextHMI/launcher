@@ -67,6 +67,7 @@ $ANDROID_SDK_ROOT"/emulator/emulator" -avd $emulator_name -writable-system
 ```
 then, after the emulator has started, get into the adb shell and create the folder:
 ```bash
+adb remount
 adb shell
 cd /system/priv-app
 mkdir Carp
