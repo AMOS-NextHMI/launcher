@@ -59,7 +59,18 @@ android {
 
 ## Running the app on the emulator while developing
 
-**You have to run the app via this method otherwise you will no obtain root permissions and get an error**
+**You have to run the app via this method otherwise you will no obtain system level permissions and get an error**
 
+0. Check if the emulator_path in the script works for you and otherwise change it to the right path, then change the emulator_name to the name of your rooted emulator. After that create the directory on your emulator in which you want the launcher-apk to sit (inside the /system/priv-app folder), by starting the emulator with the following command:
+```bash
+$ANDROID_SDK_ROOT"/emulator/emulator" -avd $emulator_name -writable-system
+```
+then, after the emulator has started, get into the adb shell and create the folder:
+```bash
+adb shell
+cd /system/priv-app
+mkdir Carp
+```
+Please note, that the folder name has to be the same as the dir_app_name variable in the script. So if you part from the one inside the script, you have to modify this var.
 1. You **have** to start the emulator via the buildAndRun script **otherwise the system is not writable** and you will get an error
 2. After the script started the emulator you can apply changes that you made in the code via the "Apply Changes and Restart Activity" ![icon image](img/readme/apply-changes-and-run-activity.png) (Ctrl+F10) **Do not press the usual "Run" Button, it will result in a premission error**
