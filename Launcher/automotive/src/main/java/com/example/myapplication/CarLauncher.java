@@ -101,6 +101,13 @@ public class CarLauncher extends FragmentActivity implements View.OnClickListene
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("oncreate","calling");
+        TripComp allen = new TripComp();
+//        val intent = Intent(this,HelloActivity::class.java) startActivity(intent)
+        Intent myIntent = new Intent(CarLauncher.this, TripComp.class);
+        myIntent.putExtra("key", "slow as balls"); //Optional parameters
+        CarLauncher.this.startActivity(myIntent);
+        Log.d("oncreate","made new tripcomp");
         super.onCreate(savedInstanceState);
         // Don't show the maps panel in multi window mode.
         // NOTE: CTS tests for split screen are not compatible with activity views on the default
@@ -192,7 +199,7 @@ public class CarLauncher extends FragmentActivity implements View.OnClickListene
     private void initializeFragments() {
         PlaybackSupportFragment playbackFragment = new PlaybackSupportFragment();
         ContextualFragment contextualFragment = null;
-        TripComp tripComp = null;
+//        TripComp tripComp = null;
         FrameLayout contextual = findViewById(R.id.contextual);
         FrameLayout tripCompFrame = findViewById(R.id.tripComp);
         if(contextual != null) {
@@ -205,17 +212,7 @@ public class CarLauncher extends FragmentActivity implements View.OnClickListene
         if(contextual != null) {
             fragmentTransaction.replace(R.id.contextual, contextualFragment);
         }
-        if (tripCompFrame != null){
-            System.out.println("trying to create a thang");
-            tripComp = new TripComp();
-            System.out.println("created perhaps a thang");
-        }
-        if (tripComp != null){
-            Fragment f = tripComp.getFragment();
-            System.out.println(f);
-            System.out.println("just printed the fragment lol");
-            fragmentTransaction.replace(R.id.tripComp, f);
-        }
+
         fragmentTransaction.commitNow();
     }
 

@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.comp_layout.*
 
 class TripCompFragment : Fragment(){
     private var isOn: Boolean = false;
-    private lateinit var speedView: TextView;
+    public lateinit var speedView: TextView;
     private lateinit var gearView: TextView;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +50,8 @@ class TripCompFragment : Fragment(){
     }
 
     fun sourceValues(speed: String,gear: String){
+        System.out.println("lahdidah");
+        println("borf diddly :)))");
 
         speedView.setText("Speed: " + speed + "km/h");
         gearView.setText("hello world");

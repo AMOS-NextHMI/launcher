@@ -3,39 +3,53 @@ package com.example.myapplication
 import android.car.Car
 import android.car.hardware.CarSensorManager
 import android.content.ComponentName
-import android.content.Intent
 import android.content.ServiceConnection
 import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.IBinder
 import android.util.Log
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.android.car.carlauncher.R
-import com.example.myapplication.TripCompFragment;
+
 class TripComp : AppCompatActivity() {
+
+
 
     private lateinit var car : Car
     private val permissions = arrayOf(Car.PERMISSION_SPEED)
-    private var tripCompFragment: TripCompFragment = TripCompFragment();
+    public var tripCompFragment: TripCompFragment = TripCompFragment();
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        println("helllllloo yo");
+        Log.d("helllllloo yo","onCreate");
         super.onCreate(savedInstanceState)
         setContentView(R.layout.comp_layout)
-        tripCompFragment.sourceValues("0","lol");
+        val extra = intent.getStringExtra("key")
+        tripCompFragment.sourceValues(extra,"lol");
 //        val intent = Intent(this, TripComp::class.java)
 ////        intent.putExtra("key", value)
 //        startActivity(intent)
 
         initCar()
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.playback, tripCompFragment)
+        fragmentTransaction.commitNow()
+
+
+
     }
 
     fun getFragment(): Fragment{
+        Log.d("helllllloo yo","getFragment");
         return this.tripCompFragment;
     }
 
+    override fun onStart() {
+        Log.d("helllllloo yo","onStart");
+        super.onStart();
+
+    }
 
 
     override fun onResume() {
