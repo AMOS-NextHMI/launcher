@@ -61,7 +61,7 @@ android {
 
 **You have to run the app via this method otherwise you will no obtain system level permissions and get an error**
 
-0. Check if the emulator_path in the script works for you and otherwise change it to the right path, then change the emulator_name to the name of your rooted emulator. After that create the directory on your emulator in which you want the launcher-apk to sit (inside the /system/priv-app folder), by starting the emulator with the following command:
+0.1 Check if the emulator_path in the script works for you and otherwise change it to the right path, then change the emulator_name to the name of your rooted emulator. After that create the directory on your emulator in which you want the launcher-apk to sit (inside the /system/priv-app folder), by starting the emulator with the following command:
 ```bash
 $ANDROID_SDK_ROOT"/emulator/emulator" -avd $emulator_name -writable-system
 ```
@@ -71,6 +71,10 @@ adb remount
 adb shell
 cd /system/priv-app
 mkdir Carp
+```
+0.2 Make the script executable on UNIX Sytems
+```bash
+chmod +x buildAndRun.sh
 ```
 Please note, that the folder name has to be the same as the dir_app_name variable in the script. So if you part from the one inside the script, you have to modify this var.
 1. You **have** to start the emulator via the buildAndRun script **otherwise the system is not writable** and you will get an error
