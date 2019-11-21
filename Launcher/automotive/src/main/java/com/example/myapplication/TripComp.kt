@@ -24,6 +24,8 @@ class TripComp : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d("helllllloo yo","onCreate");
         super.onCreate(savedInstanceState)
+
+        initCar()
         setContentView(R.layout.comp_layout)
         val extra = intent.getStringExtra("key")
         tripCompFragment.sourceValues(extra,"lol");
@@ -31,7 +33,6 @@ class TripComp : AppCompatActivity() {
 ////        intent.putExtra("key", value)
 //        startActivity(intent)
 
-        initCar()
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.playback, tripCompFragment)
         fragmentTransaction.commitNow()
