@@ -198,21 +198,22 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
         TripCompFragment tripCompFragment = null;
        FrameLayout contextual = findViewById(R.id.contextual);
 
-
+//        FrameLayout tripComp = findViewById(R.id.tripComp);
         if(contextual != null) {
             contextualFragment = new ContextualFragment();
-            tripCompFragment = new TripCompFragment();
+            tripCompFragment  = new TripCompFragment();
         }
 
         FragmentTransaction fragmentTransaction =
                 getSupportFragmentManager().beginTransaction();
         //fragmentTransaction.replace(R.id.playback, playbackFragment);
         if(contextual != null) {
-            System.out.print("we are here!");
+
+
+            fragmentTransaction.replace(R.id.contextual, contextualFragment);
+
             fragmentTransaction.replace(R.id.tripComp, tripCompFragment);
 
-
-;
         }
 
         fragmentTransaction.commitNow();

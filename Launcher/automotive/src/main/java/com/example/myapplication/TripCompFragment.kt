@@ -1,19 +1,17 @@
 package com.example.myapplication;
 
 
+//import android.support.v4.app.Fragment
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
-//import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.android.car.carlauncher.R
-import kotlinx.android.synthetic.main.comp_layout.*
 
 
 class TripCompFragment : Fragment(){
@@ -52,28 +50,17 @@ class TripCompFragment : Fragment(){
         super.onPause()
     }
 
-    fun sourceValues(speed: String,gear: String){
-        System.out.println("lahdidah");
-        if (::speedView.isInitialized){
-            Log.d("TCFrag","nully bly1"+speedView);
-        }else{
-            Log.d("TCFrag","init1");
-        }
-        println("wtfff");
-        Log.d("TCFrag","ok now")
-        println("borf diddly :)))");
-        if (::speedView.isInitialized){
-            Log.d("TCFrag","notnull");
 
-        }else{
-            Log.d("TCFrag","nully bly");
+
+
+    fun sourceValues(speed: String,gear: String){
+
+        if (!::speedView.isInitialized){
             return;
 
         }
-        Log.d("apparently we're going on","rip");
 
         speedView.setText("Speed: " + speed + "km/h");
-        gearView.setText("hello world");
     }
 
 
