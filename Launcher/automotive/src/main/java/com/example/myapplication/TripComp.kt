@@ -1,6 +1,5 @@
 package com.example.myapplication
 
-/*
 import android.car.Car
 import android.car.hardware.CarSensorManager
 import android.content.ComponentName
@@ -131,4 +130,3 @@ class TripComp : AppCompatActivity() {
         }
     }
 }
-*/
