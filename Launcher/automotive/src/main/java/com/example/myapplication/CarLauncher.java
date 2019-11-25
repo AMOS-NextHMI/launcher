@@ -22,18 +22,13 @@ import android.app.ActivityOptions;
 import android.app.ActivityView;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.filterfw.core.Frame;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.leanback.app.PlaybackSupportFragment;
 
 import com.android.car.carlauncher.R;
 
@@ -62,7 +57,7 @@ import java.util.Set;
  * switching away from and back to the current user. To avoid a crash, this Activity will finish
  * when switching users.
  */
-public class CarLauncher extends FragmentActivity implements View.OnClickListener {
+public class CarLauncher extends FragmentActivity /*implements View.OnClickListener*/ {
     private static final String TAG = "CarLauncher";
 
     private ActivityView mActivityView;
@@ -102,12 +97,12 @@ public class CarLauncher extends FragmentActivity implements View.OnClickListene
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d("oncreate","calling");
-        TripComp allen = new TripComp();
+      //  TripComp allen = new TripComp();
 //        val intent = Intent(this,HelloActivity::class.java) startActivity(intent)
-        Intent myIntent = new Intent(CarLauncher.this, TripComp.class);
-        myIntent.putExtra("key", "slow as balls"); //Optional parameters
-        CarLauncher.this.startActivity(myIntent);
-        Log.d("oncreate","made new tripcomp");
+      //  Intent myIntent = new Intent(CarLauncher.this, TripComp.class);
+   //     myIntent.putExtra("key", "slow as balls"); //Optional parameters
+    //    CarLauncher.this.startActivity(myIntent);
+    //    Log.d("oncreate","made new tripcomp");
         super.onCreate(savedInstanceState);
         // Don't show the maps panel in multi window mode.
         // NOTE: CTS tests for split screen are not compatible with activity views on the default
@@ -118,13 +113,15 @@ public class CarLauncher extends FragmentActivity implements View.OnClickListene
             setContentView(R.layout.car_launcher);
         }
         initializeFragments();
-        mActivityView = findViewById(R.id.maps);
+
+       // mActivityView = findViewById(R.id.maps);
+ //       mActivityView = findViewById(R.id.tripComp);
         if (mActivityView != null) {
             mActivityView.setCallback(mActivityViewCallback);
         }
 
-        Button myButton = (Button) findViewById(R.id.myButton);
-        myButton.setOnClickListener(this);
+//        Button myButton = (Button) findViewById(R.id.myButton);
+//        myButton.setOnClickListener(this);
     }
 
     @Override
@@ -197,18 +194,18 @@ public class CarLauncher extends FragmentActivity implements View.OnClickListene
     }
 
     private void initializeFragments() {
-        PlaybackSupportFragment playbackFragment = new PlaybackSupportFragment();
+       // PlaybackSupportFragment playbackFragment = new PlaybackSupportFragment();
         ContextualFragment contextualFragment = null;
-//        TripComp tripComp = null;
+
         FrameLayout contextual = findViewById(R.id.contextual);
-        FrameLayout tripCompFrame = findViewById(R.id.tripComp);
+
         if(contextual != null) {
             contextualFragment = new ContextualFragment();
         }
 
         FragmentTransaction fragmentTransaction =
                 getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.playback, playbackFragment);
+        //fragmentTransaction.replace(R.id.playback, playbackFragment);
         if(contextual != null) {
             fragmentTransaction.replace(R.id.contextual, contextualFragment);
         }
@@ -216,7 +213,7 @@ public class CarLauncher extends FragmentActivity implements View.OnClickListene
         fragmentTransaction.commitNow();
     }
 
-    @Override
+    /*@Override
     public void onClick(View v) {
 
         switch (v.getId()) {
@@ -229,5 +226,5 @@ public class CarLauncher extends FragmentActivity implements View.OnClickListene
 
         }
     }
-
+*/
 }
