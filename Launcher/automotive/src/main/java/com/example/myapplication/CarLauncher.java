@@ -95,7 +95,6 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//     Log.d("oncreate","calling");
 
 
         super.onCreate(savedInstanceState);
@@ -112,7 +111,7 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
 
         initializeFragments();
         Intent tripCompIntent = new Intent(this,TripComp.class);
-        tripCompIntent.putExtra("Value1", "Android By Feriel");
+
         startActivity(tripCompIntent,tripCompIntent.getExtras());
         Log.d("oncreate","tripComp activity was started");
 
@@ -160,6 +159,33 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
         }
     }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        initializeFragments();
+    }
+
+    private void initializeFragments() {
+       // PlaybackSupportFragment playbackFragment = new PlaybackSupportFragment();
+        ContextualFragment contextualFragment = null;
+
+       FrameLayout contextual = findViewById(R.id.contextual);
+
+        if(contextual != null) {
+            contextualFragment = new ContextualFragment();
+        }
+        FragmentTransaction fragmentTransaction =
+                getSupportFragmentManager().beginTransaction();
+
+        if(contextual != null) {
+            fragmentTransaction.replace(R.id.contextual, contextualFragment);
+        }
+
+        fragmentTransaction.commitNow();
+    }
+
+
+
 //    private void startMapsInActivityView() {
 //        // If we happen to be be resurfaced into a multi display mode we skip launching content
 //        // in the activity view as we will get recreated anyway.
@@ -184,50 +210,6 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
 //        return Intent.makeMainSelectorActivity(Intent.ACTION_MAIN, Intent.CATEGORY_APP_MAPS);
 //    }
 
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        initializeFragments();
-    }
-
-    private void initializeFragments() {
-       // PlaybackSupportFragment playbackFragment = new PlaybackSupportFragment();
-        ContextualFragment contextualFragment = null;
-      //  TripCompFragment tripCompFragment = null;
-       FrameLayout contextual = findViewById(R.id.contextual);
-
-        if(contextual != null) {
-            contextualFragment = new ContextualFragment();
-         //   tripCompFragment  = new TripCompFragment();
-        }
-
-        FragmentTransaction fragmentTransaction =
-                getSupportFragmentManager().beginTransaction();
-
-        if(contextual != null) {
 
 
-            fragmentTransaction.replace(R.id.contextual, contextualFragment);
-
-          // fragmentTransaction.replace(R.id.tripComp, tripCompFragment);
-
-        }
-
-        fragmentTransaction.commitNow();
-    }
-
-    /*@Override
-    public void onClick(View v) {
-
-        switch (v.getId()) {
-            case R.id.myButton:
-                // Do something
-                TextView middleTextView = findViewById(R.id.middleText);
-//                middleTextView.setBackgroundColor("@color/red");
-                middleTextView.setBackgroundColor(123458);
-                middleTextView.setText("the middle text view\nindicates that the button\nwas pressed :)");
-
-        }
-    }
-*/
 }
