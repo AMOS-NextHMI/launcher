@@ -1,29 +1,29 @@
 #!/bin/bash
 
-###################################################
-# CHANGE THESE FOR YOUR SYSTEM
-emulator_path=$ANDROID_SDK_ROOT"/emulator/emulator"
-emulator_name="Rooted"
-###################################################
-# CHANGE THESE IF YOU WANT TO CHANGE/HAVE CHANGED THE APP NAME
-dir_app_name="Carp"
-app_name="com.example.myapplication"
+if [ -f .env ]
+then
+  export $(xargs <.env)
+fi
 
+if [ -z ${AMOS_EMULATOR_PATH+x} ]; then AMOS_EMULATOR_PATH=$ANDROID_SDK_ROOT"/emulator/emulator"; fi
+if [ -z ${AMOS_EMULATOR_NAME+x} ]; then AMOS_EMULATOR_NAME="Rooted"; fi
+if [ -z ${AMOS_LAUNCHER_DIR_NAME+x} ]; then AMOS_LAUNCHER_DIR_NAME="Carp"; fi
+if [ -z ${AMOS_LAUNCHER_APP_NAME+x} ]; then AMOS_LAUNCHER_APP_NAME="com.example.myapplication"; fi
 
 ADB="adb" # how you execute adb
 ADB_SH="$ADB shell" # this script assumes using `adb root`. for `adb su` see `Caveats`
 
 path_sysapp="/system/priv-app"
 apk_host="./automotive/build/outputs/apk/debug/automotive-debug.apk"
-apk_name=$dir_app_name".apk"
-apk_target_dir="$path_sysapp/$dir_app_name"
+apk_name=$AMOS_LAUNCHER_DIR_NAME".apk"
+apk_target_dir="$path_sysapp/$AMOS_LAUNCHER_DIR_NAME"
 apk_target_sys="$apk_target_dir/$apk_name"
 
 # Delete previous APK
 rm -f $apk_host
 
 # Compile the APK: you can adapt this for production build, flavors, etc.
-./gradlew assembleDebug || exit -1 # exit on failure
+./gradlew assembleDebug || exit 1 # exit on failure
 
 # check if emulator is already running
 adb_output="$(adb get-state)"
@@ -32,7 +32,7 @@ adb_output="$(adb get-state)"
 if [[ ! "$adb_output" =~ "device" ]]
 then
   echo "Starting the emulator...."
-  $emulator_path -avd $emulator_name -writable-system &
+  $AMOS_EMULATOR_PATH -avd $AMOS_EMULATOR_NAME -writable-system &
 fi
 
 
@@ -44,7 +44,7 @@ do
 done
 
 # Stop the app
- $ADB_SH "am force-stop $app_name"
+$ADB_SH "am force-stop $AMOS_LAUNCHER_APP_NAME"
 
 # Install APK: using adb root
 $ADB remount
