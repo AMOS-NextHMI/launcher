@@ -96,8 +96,7 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 //     Log.d("oncreate","calling");
-        Intent tripCompIntent = new Intent(this,TripComp.class);
-        tripCompIntent.putExtra("Value1", "Android By Feriel");
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.car_launcher);
@@ -112,6 +111,8 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
 
 
         initializeFragments();
+        Intent tripCompIntent = new Intent(this,TripComp.class);
+        tripCompIntent.putExtra("Value1", "Android By Feriel");
         startActivity(tripCompIntent,tripCompIntent.getExtras());
         Log.d("oncreate","tripComp activity was started");
 
@@ -192,12 +193,12 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
     private void initializeFragments() {
        // PlaybackSupportFragment playbackFragment = new PlaybackSupportFragment();
         ContextualFragment contextualFragment = null;
-        TripCompFragment tripCompFragment = null;
+      //  TripCompFragment tripCompFragment = null;
        FrameLayout contextual = findViewById(R.id.contextual);
 
         if(contextual != null) {
             contextualFragment = new ContextualFragment();
-            tripCompFragment  = new TripCompFragment();
+         //   tripCompFragment  = new TripCompFragment();
         }
 
         FragmentTransaction fragmentTransaction =
@@ -208,7 +209,7 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
 
             fragmentTransaction.replace(R.id.contextual, contextualFragment);
 
-            fragmentTransaction.replace(R.id.tripComp, tripCompFragment);
+          // fragmentTransaction.replace(R.id.tripComp, tripCompFragment);
 
         }
 

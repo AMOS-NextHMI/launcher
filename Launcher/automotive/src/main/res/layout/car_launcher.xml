@@ -154,16 +154,9 @@
 
             >
 
-            <FrameLayout
-                android:id="@+id/tripComp"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
-                android:layout_margin="@dimen/main_screen_widget_margin"
-                app:layout_constraintBottom_toTopOf="@+id/divider_horizontal"
-                app:layout_constraintEnd_toStartOf="@+id/end_edge"
-                app:layout_constraintStart_toEndOf="@+id/divider_vertical"
-                app:layout_constraintTop_toBottomOf="@+id/top_edge" />
+
+
+            <include android:id="@+id/tripComp" layout="@layout/comp_layout" />
 
 
 <!--        <View-->
