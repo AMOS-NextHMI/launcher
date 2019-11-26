@@ -76,6 +76,16 @@ mkdir Carp
 ```bash
 chmod +x buildAndRun.sh
 ```
-Please note, that the folder name has to be the same as the dir_app_name variable in the script. So if you part from the one inside the script, you have to modify this var.
+0.3 Modify the appropiate variables in your .env file to adjust the script to your system/needs
+```bash
+AMOS_EMULATOR_PATH=$ANDROID_SDK_ROOT"/emulator/emulator"
+AMOS_EMULATOR_NAME="Rooted"
+AMOS_LAUNCHER_DIR_NAME="Carp"
+AMOS_LAUNCHER_APP_NAME="com.example.myapplication"
+```
+The .env file is not tracked and you have to create it yourself the first time.
+The default values of the script are the ones shown here in the example.
+
+Please note, that the folder name has to be the same as the AMOS_LAUNCHER_DIR_NAME variable in the script. So if you part from the one inside the script, you have to modify this var.
 1. You **have** to start the emulator via the buildAndRun script **otherwise the system is not writable** and you will get an error
 2. After the script started the emulator you can apply changes that you made in the code via the "Apply Changes and Restart Activity" ![icon image](img/readme/apply-changes-and-run-activity.png) (Ctrl+F10) **Do not press the usual "Run" Button, it will result in a premission error**
