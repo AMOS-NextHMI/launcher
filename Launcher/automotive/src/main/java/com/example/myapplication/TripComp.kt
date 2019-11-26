@@ -27,27 +27,16 @@ class TripComp : AppCompatActivity() {
 
         initCar()
         setContentView(R.layout.comp_layout)
-        val extra = intent.getStringExtra("key")
-        tripCompFragment.sourceValues(extra,"lol");
-//        val intent = Intent(this, TripComp::class.java)
-////        intent.putExtra("key", value)
-//        startActivity(intent)
-
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.playback, tripCompFragment)
-        fragmentTransaction.commitNow()
-
-
 
     }
 
     fun getFragment(): Fragment{
-        Log.d("helllllloo yo","getFragment");
+
         return this.tripCompFragment;
     }
 
     override fun onStart() {
-        Log.d("helllllloo yo","onStart");
+
         super.onStart();
 
     }

@@ -95,14 +95,12 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("oncreate","calling");
-      //  TripComp allen = new TripComp();
-//        val intent = Intent(this,HelloActivity::class.java) startActivity(intent)
-      //  Intent myIntent = new Intent(CarLauncher.this, TripComp.class);
-   //     myIntent.putExtra("key", "slow as balls"); //Optional parameters
-    //    CarLauncher.this.startActivity(myIntent);
-    //    Log.d("oncreate","made new tripcomp");
+//     Log.d("oncreate","calling");
+        Intent tripCompIntent = new Intent(this,TripComp.class);
+        tripCompIntent.putExtra("Value1", "Android By Feriel");
+
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.car_launcher);
         // Don't show the maps panel in multi window mode.
         // NOTE: CTS tests for split screen are not compatible with activity views on the default
         // activity of the launcher
@@ -111,17 +109,16 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
 //        } else {
 //
 //        }
-        setContentView(R.layout.car_launcher);
-        initializeFragments();
 
-       // mActivityView = findViewById(R.id.maps);
- //       mActivityView = findViewById(R.id.tripComp);
+
+        initializeFragments();
+        startActivity(tripCompIntent,tripCompIntent.getExtras());
+        Log.d("oncreate","tripComp activity was started");
+
         if (mActivityView != null) {
             mActivityView.setCallback(mActivityViewCallback);
         }
 
-//        Button myButton = (Button) findViewById(R.id.myButton);
-//        myButton.setOnClickListener(this);
     }
 
     @Override
@@ -198,7 +195,6 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
         TripCompFragment tripCompFragment = null;
        FrameLayout contextual = findViewById(R.id.contextual);
 
-//        FrameLayout tripComp = findViewById(R.id.tripComp);
         if(contextual != null) {
             contextualFragment = new ContextualFragment();
             tripCompFragment  = new TripCompFragment();
@@ -206,7 +202,7 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
 
         FragmentTransaction fragmentTransaction =
                 getSupportFragmentManager().beginTransaction();
-        //fragmentTransaction.replace(R.id.playback, playbackFragment);
+
         if(contextual != null) {
 
 
