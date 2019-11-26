@@ -43,6 +43,10 @@ do
   sleep 1s
 done
 
+# Set the appropriate shell parameters
+$ADB_SH settings put global hidden_api_policy_pre_p_apps 1
+$ADB_SH settings put global hidden_api_policy_p_apps 1
+
 # Stop the app
 $ADB_SH "am force-stop $AMOS_LAUNCHER_APP_NAME"
 
