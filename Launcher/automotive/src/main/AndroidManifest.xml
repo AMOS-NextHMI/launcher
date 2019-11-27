@@ -17,8 +17,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.android.car.carlauncher"
-    android:sharedUserId="android.uid.system"
     tools:ignore="ImpliedTouchscreenHardware,MissingLeanbackLauncher,MissingLeanbackSupport">
+    <!-- android:sharedUserId="android.uid.system" -->
+
+    <uses-feature
+        android:name="android.software.live_wallpaper"
+        android:required="true"></uses-feature>
 
     <!-- System permission to get app usage data -->
     <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
