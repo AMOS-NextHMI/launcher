@@ -68,25 +68,47 @@
         android:layout_height="match_parent"
         android:orientation="horizontal" >
 
+<!--        <LinearLayout-->
+<!--            android:background="@color/red"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:orientation="vertical">-->
+
+
+<!--&lt;!&ndash;            <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;                android:id="@+id/text"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:text="Hello, I am a TextView" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <Button&ndash;&gt;-->
+<!--&lt;!&ndash;                android:id="@+id/myButton"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:text="press this button OR ELSE" />&ndash;&gt;-->
+<!--        </LinearLayout>-->
+<!--        <LinearLayout-->
+
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:orientation="vertical">-->
+<!--            <include android:id="@+id/anotherApp" layout="@layout/another_app_layout" />-->
+
+
+
+<!--        </LinearLayout>-->
         <LinearLayout
-            android:background="@color/red"
+
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
+            <include android:id="@+id/tripComp" layout="@layout/comp_layout" />
 
 
-<!--            <TextView-->
-<!--                android:id="@+id/text"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Hello, I am a TextView" />-->
 
-<!--            <Button-->
-<!--                android:id="@+id/myButton"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="press this button OR ELSE" />-->
         </LinearLayout>
 
         <LinearLayout
@@ -95,7 +117,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
-            <include android:id="@+id/tripComp" layout="@layout/comp_layout" />
+            <include android:id="@+id/tripComp3" layout="@layout/another_app_layout" />
 
 
 
@@ -139,10 +161,10 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="@color/red"
+            android:background="@color/red">
+            <include android:id="@+id/tripComp3" layout="@layout/random_layout" />
 
-            >
-
+        </LinearLayout>
 
 
 
@@ -152,7 +174,6 @@
 <!--            android:id="@+id/bottom_line"-->
 <!--            style="@style/HorizontalLineDivider"-->
 <!--            app:layout_constraintBottom_toBottomOf="parent"/>-->
-        </LinearLayout>
     </LinearLayout>
 
 

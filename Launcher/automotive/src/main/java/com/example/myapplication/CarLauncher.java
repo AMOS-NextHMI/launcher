@@ -111,8 +111,13 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
 
         initializeFragments();
         Intent tripCompIntent = new Intent(this,TripComp.class);
+//        Intent anotherAppIntent = new Intent(this,AnotherApp.class);
+        startActivity(new Intent(this, TripComp2.class));
 
         startActivity(tripCompIntent,tripCompIntent.getExtras());
+        startActivity(new Intent(this,PracticeJavaApp.class));
+//        startActivity(anotherAppIntent,anotherAppIntent.getExtras());
+//        startActivity();
         Log.d("oncreate","tripComp activity was started");
 
         if (mActivityView != null) {

@@ -9,8 +9,7 @@ android:layout_height="match_parent"
 
 
 <ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/scrollViewComp"
+    android:id="@+id/scrollView2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_centerVertical="true"
@@ -20,7 +19,6 @@ android:layout_height="match_parent"
     android:scrollbars="none" >
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/ListViewCatalogueRDV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,31 +31,33 @@ android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="vertical" >
-
+            android:orientation="vertical">
 
 
             <TextView
-                android:id="@+id/TextViewDimancheCatalogueRDV1"
+                android:id="@+id/another_app_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Car Sensor Data"
+                android:text="Another App"
+                android:textAlignment="center"
+                android:textColor="@color/green"
                 android:textSize="30sp" />
 
 
-            <TextView
-                android:id="@+id/speedTextView"
 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+            <TextView
+                android:id="@+id/speedTextView2"
+
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
                 android:textAllCaps="true"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/red"
                 android:textStyle="bold|italic" />
+
             <TextView
-                android:id="@+id/gearTextView"
+                android:id="@+id/gearTextView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -68,12 +68,11 @@ android:layout_height="match_parent"
 
 
             <ListView
-                android:id="@+id/ListViewDimancheCatalogueRDV1"
+                android:id="@+id/ListViewDimancheCatalogueRDV12"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
-            </ListView >
-        </LinearLayout >
+                android:orientation="vertical"></ListView>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -82,7 +81,7 @@ android:layout_height="match_parent"
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/TextViewLundiCatalogueRDV2"
+                android:id="@+id/TextViewLundiCatalogueRDV22"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -90,7 +89,7 @@ android:layout_height="match_parent"
                 android:textSize="30sp" />
 
             <ListView
-                android:id="@+id/ListViewLundiCatalogueRDV2"
+                android:id="@+id/ListViewLundiCatalogueRDV22"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" >
@@ -104,7 +103,7 @@ android:layout_height="match_parent"
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/engineOilTextView"
+                android:id="@+id/engineOilTextView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -112,7 +111,7 @@ android:layout_height="match_parent"
                 android:textSize="30sp" />
 
             <ListView
-                android:id="@+id/ListViewDimancheCatalogueRDV3"
+                android:id="@+id/ListViewDimancheCatalogueRDV32"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" >

@@ -95,6 +95,34 @@
             <meta-data android:name="distractionOptimized" android:value="true"/>
         </activity>
 
+        <activity
+            android:name="com.example.myapplication.TripComp2"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:launchMode="singleInstance"
+            android:resizeableActivity="true"
+            android:noHistory="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.LAUNCHER"/>
+            </intent-filter>
+            <meta-data android:name="distractionOptimized" android:value="true"/>
+        </activity>
+
+        <activity
+            android:name="com.example.myapplication.PracticeJavaApp"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:launchMode="singleInstance"
+            android:resizeableActivity="true"
+            android:noHistory="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.LAUNCHER"/>
+            </intent-filter>
+            <meta-data android:name="distractionOptimized" android:value="true"/>
+        </activity>
+
+
+
 
 
 

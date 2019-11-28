@@ -8,21 +8,21 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.IBinder
 import android.util.Log
-import android.widget.ScrollView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.android.car.carlauncher.R
 
-class TripComp : AppCompatActivity() {
+class AnotherApp : AppCompatActivity() {
 
     private lateinit var car : Car
     private val permissions = arrayOf(Car.PERMISSION_SPEED, Car.PERMISSION_POWERTRAIN)
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.car_launcher)
-        Log.d("borf diddly tripc","allen start");
+        Log.d("borf diddly","allen start");
         initCar()
     }
 
@@ -115,7 +115,7 @@ class TripComp : AppCompatActivity() {
 
 
 
-                    var gearTextView = findViewById<TextView>(R.id.gearTextView)
+                    var gearTextView = findViewById<TextView>(R.id.gearTextView2)
 
 
                     when (carSensorEvent.intValues[0]) {
@@ -150,16 +150,11 @@ class TripComp : AppCompatActivity() {
         sensorManager.registerListener(
                 { carSensorEvent ->
 
-                    var speedTextView = findViewById<TextView>(R.id.speedTextView)
-                    var speedTextView2 = findViewById<TextView>(R.id.speedTextView2)
-                    var gearTextView2 = findViewById<TextView>(R.id.gearTextView2)
-                    var background = findViewById<ScrollView>(R.id.scrollViewComp);
+                    var speedTextView = findViewById<TextView>(R.id.speedTextView2)
 
-                        speedTextView.text = "Speed: " + carSensorEvent.floatValues[0].toString() + "km/h"
+                    speedTextView.text = "Speed: " + carSensorEvent.floatValues[0].toString() + "km/h"
+                    Log.d("lardihardhard","speed change");
 
-                    Log.d("lard","speed change even here we can see |" + speedTextView2.text.toString()+"|");
-                    Log.d("lard: ","wubdadubdub: "+gearTextView2.text.toString());
-                    background.setBackgroundColor(123458);
 
                 },
                 CarSensorManager.SENSOR_TYPE_CAR_SPEED,
@@ -172,6 +167,7 @@ class TripComp : AppCompatActivity() {
 
         sensorManager.registerListener(
                 { carSensorEvent ->
+//                    println()
                     println(carSensorEvent.toString())
                     //var engineOilTextView = findViewById<TextView>(R.id.engineOilTextView)
                     //engineOilTextView.text = "Engine Oil Level: " + carSensorEvent.toString();
