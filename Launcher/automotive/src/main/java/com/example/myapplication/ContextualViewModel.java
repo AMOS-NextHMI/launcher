@@ -19,6 +19,8 @@ package com.example.myapplication;
 import android.app.Application;
 import android.car.CarNotConnectedException;
 
+
+
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.ViewModel;
@@ -40,6 +42,7 @@ public class ContextualViewModel extends AndroidViewModel {
        // this(application, getCarProjectionManager(application));
     }
 
+
 //    private static CarProjectionManager getCarProjectionManager(Context context) throws CarNotConnectedException {
 //
 //        return (CarProjectionManager)
@@ -59,6 +62,7 @@ public class ContextualViewModel extends AndroidViewModel {
     public MediatorLiveData<ContextualInfo> getContextualInfo() {
         return mContextualInfo;
     }
+
 
 
 
@@ -95,6 +99,7 @@ public class ContextualViewModel extends AndroidViewModel {
     }
 
 */
+
 
 
 }

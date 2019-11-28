@@ -24,10 +24,15 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+
+import android.widget.Button;
+
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.leanback.app.PlaybackSupportFragment;
 
 import com.android.car.carlauncher.R;
 
@@ -56,7 +61,9 @@ import java.util.Set;
  * switching away from and back to the current user. To avoid a crash, this Activity will finish
  * when switching users.
  */
+
 public class CarLauncher extends FragmentActivity /*implements View.OnClickListener*/ {
+
     private static final String TAG = "CarLauncher";
 
     private ActivityView mActivityView;
@@ -119,6 +126,7 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
             mActivityView.setCallback(mActivityViewCallback);
         }
 
+
     }
 
     @Override
@@ -142,6 +150,7 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
         super.onStart();
 
         Log.d(TAG, "onStart: Hello World");
+        System.out.println("hello again");
         mIsStarted = true;
     }
 
@@ -183,6 +192,7 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
 
         fragmentTransaction.commitNow();
     }
+
 
 
 

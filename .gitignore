@@ -15,3 +15,6 @@ bin/
 # Android studio
 *.iml
 .idea
+
+# config files
+.env

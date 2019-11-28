@@ -15,6 +15,7 @@
   limitations under the License.
   -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:tools="http://schemas.android.com/tools" package="com.android.car.carlauncher" > <!--android:sharedUserId="android.uid.system"-->
 
     <!-- System permission to get app usage data -->
@@ -28,6 +29,8 @@
     <uses-permission android:name="android.car.permission.CAR_POWERTRAIN" />
     <uses-permission android:name="android.car.permission.CAR_PERMISSION_ENERGY" />
 
+
+    <!-- System permission to get app usage data -->
     <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
         tools:ignore="ProtectedPermissions" />
     <!-- System permission to send events to hosted maps activity -->
@@ -95,8 +98,11 @@
             <meta-data android:name="distractionOptimized" android:value="true"/>
         </activity>
 
-
-
+        <receiver android:name="androidx.media.session.MediaButtonReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_BUTTON" />
+            </intent-filter>
+        </receiver>
 
     </application>
 </manifest>
