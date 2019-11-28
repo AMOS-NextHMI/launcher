@@ -15,7 +15,9 @@
     limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_title">Carpp Launcher</string>
+
+    <string name="app_title">Car Launcher NEXTHMI</string>
+
     <string name="all_apps">All Clapps</string>
 
     <string name="driving_toast_text">

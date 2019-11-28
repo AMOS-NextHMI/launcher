@@ -17,16 +17,11 @@
 package com.example.myapplication;
 
 import android.app.Application;
-import android.car.Car;
 import android.car.CarNotConnectedException;
-import android.car.CarProjectionManager;
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.ServiceConnection;
-import android.os.IBinder;
+
+
 
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -48,23 +43,29 @@ public class ContextualViewModel extends AndroidViewModel {
     }
 
 
+//    private static CarProjectionManager getCarProjectionManager(Context context) throws CarNotConnectedException {
+//
+//        return (CarProjectionManager)
+//                Car.createCar(context, new ServiceConnection() {
+//                    @Override
+//                    public void onServiceConnected(ComponentName name, IBinder service) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onServiceDisconnected(ComponentName name) {
+//
+//                    }
+//                }).getCarManager(Car.PROJECTION_SERVICE);
+//    }
 
-
-    private static CarProjectionManager getCarProjectionManager(Context context) throws CarNotConnectedException {
-
-        return (CarProjectionManager)
-                Car.createCar(context, new ServiceConnection() {
-                    @Override
-                    public void onServiceConnected(ComponentName name, IBinder service) {
-
-                    }
-
-                    @Override
-                    public void onServiceDisconnected(ComponentName name) {
-
-                    }
-                }).getCarManager(Car.PROJECTION_SERVICE);
+    public MediatorLiveData<ContextualInfo> getContextualInfo() {
+        return mContextualInfo;
     }
+
+
+
+
 
    /* @VisibleForTesting
     ContextualViewModel(Application application, CarProjectionManager carProjectionManager) {
@@ -99,7 +100,6 @@ public class ContextualViewModel extends AndroidViewModel {
 
 */
 
-    public LiveData<ContextualInfo> getContextualInfo() {
-        return mContextualInfo;
-    }
+
+
 }
