@@ -77,7 +77,7 @@
             android:orientation="vertical">
 
 
-<!--            <TextView-->
+            <!--            <TextView-->
 <!--                android:id="@+id/text"-->
 <!--                android:layout_width="wrap_content"-->
 <!--                android:layout_height="wrap_content"-->
@@ -91,12 +91,16 @@
         </LinearLayout>
 
         <LinearLayout
-
+            android:id="@+id/TripComp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
-            <include android:id="@+id/tripComp" layout="@layout/comp_layout" />
+
+
+
+
+
 
 
 

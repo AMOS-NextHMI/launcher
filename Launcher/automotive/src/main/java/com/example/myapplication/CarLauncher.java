@@ -18,21 +18,17 @@ package com.example.myapplication;
 
 
 import android.app.ActivityManager;
+import android.app.ActivityOptions;
 import android.app.ActivityView;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-
-import android.widget.Button;
-
 import android.widget.FrameLayout;
-import android.widget.TextView;
 
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.leanback.app.PlaybackSupportFragment;
 
 import com.android.car.carlauncher.R;
 
@@ -75,6 +71,7 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
                 @Override
                 public void onActivityViewReady(ActivityView view) {
                     mActivityViewReady = true;
+
                     //startMapsInActivityView();
                 }
 
@@ -117,14 +114,15 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
 
 
         initializeFragments();
-        Intent tripCompIntent = new Intent(this,TripComp.class);
 
-        startActivity(tripCompIntent,tripCompIntent.getExtras());
         Log.d("oncreate","tripComp activity was started");
 
         if (mActivityView != null) {
+
             mActivityView.setCallback(mActivityViewCallback);
         }
+
+
 
 
     }
@@ -164,7 +162,7 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
     protected void onDestroy() {
         super.onDestroy();
         if (mActivityView != null && mActivityViewReady) {
-            // mActivityView.release();
+            //mActivityView.release();
         }
     }
 
@@ -194,8 +192,8 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
     }
 
 
-
-
+//
+//
 //    private void startMapsInActivityView() {
 //        // If we happen to be be resurfaced into a multi display mode we skip launching content
 //        // in the activity view as we will get recreated anyway.
@@ -219,6 +217,32 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
 //    private Intent getMapsIntent() {
 //        return Intent.makeMainSelectorActivity(Intent.ACTION_MAIN, Intent.CATEGORY_APP_MAPS);
 //    }
+    private void startTripCompInActivityView() {
+        // If we happen to be be resurfaced into a multi display mode we skip launching content
+        // in the activity view as we will get recreated anyway.
+        if (!mActivityViewReady || isInMultiWindowMode() || isInPictureInPictureMode()) {
+            return;
+        }
+        if (mActivityView != null) {
+            mActivityView.startActivity(getTripCompIntent(), null);
+        }
+    }
+
+    private void launchTripCompActivity() {
+        // Make sure the Activity launches on the current display instead of in the ActivityView
+        // virtual display.
+        final ActivityOptions options = ActivityOptions.makeBasic();
+        //options.setLaunchDisplayId(getDisplay().getDisplayId());
+        options.setLaunchDisplayId(0);
+        startActivity(getTripCompIntent(), options.toBundle());
+    }
+
+    private Intent getTripCompIntent() {
+        //return null;
+        Intent intent=new Intent(Intent.ACTION_VIEW);
+        intent.setComponent(new ComponentName("com.example.",
+                "com.qz.test.StartUpActivity"));
+    }
 
 
 

@@ -57,6 +57,7 @@
         android:icon="@drawable/ic_launcher_home"
         android:label="@string/app_title"
         android:theme="@style/Theme.Launcher">
+
         <activity
             android:name="com.example.myapplication.CarLauncher"
             android:configChanges="uiMode|mcc|mnc"
@@ -85,18 +86,8 @@
         </activity>
 
 
-        <activity
-            android:name="com.example.myapplication.TripComp"
-            android:theme="@style/Theme.AppCompat.Light"
-            android:launchMode="singleInstance"
-            android:resizeableActivity="true"
-            android:noHistory="true">
 
-            <intent-filter>
-                <action android:name="android.intent.action.LAUNCHER"/>
-            </intent-filter>
-            <meta-data android:name="distractionOptimized" android:value="true"/>
-        </activity>
+
 
         <receiver android:name="androidx.media.session.MediaButtonReceiver" >
             <intent-filter>
