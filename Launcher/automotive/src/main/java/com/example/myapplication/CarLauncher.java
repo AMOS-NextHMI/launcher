@@ -75,7 +75,6 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
 
                     //startMapsInActivityView();
                    startTripCompInActivityView();
-                   System.out.print("We are in this bitch");
 
                 }
 
@@ -226,7 +225,7 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
         // in the activity view as we will get recreated anyway.
 
         if (!mActivityViewReady || isInMultiWindowMode() || isInPictureInPictureMode()) {
-            System.out.print("its not ready");
+
             return;
         }
         if (mActivityView != null) {
