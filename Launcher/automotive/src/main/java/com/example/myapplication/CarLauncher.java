@@ -19,8 +19,9 @@ package com.example.myapplication;
 
 import android.app.ActivityManager;
 import android.app.ActivityView;
+import android.content.ComponentName;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
+import android.content.pm.ActivityInfo;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -119,20 +120,21 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
 
         Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
         mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-        List<ResolveInfo> pkgAppsList = this.getPackageManager().queryIntentActivities( mainIntent, 0);
-        Intent intent = this.getPackageManager().getLaunchIntentForPackage("com.example.carapibasics");
-        if(intent!=null)
-            System.out.print("we are safe.");
-        else
-            System.out.print("not seeing it");
-        List<PackageInfo> ip = this.getPackageManager().getInstalledPackages(0);
 
-        System.out.print("****************************");
-        System.out.print(pkgAppsList.toString());
-        System.out.println("****************************");
-        System.out.println("****************************");
-        System.out.print(ip.toString());
-        System.out.print("****************************");
+        List<ResolveInfo> pkgAppsList = getPackageManager().queryIntentActivities( mainIntent, 0);
+        ActivityInfo tp = pkgAppsList.get(pkgAppsList.size() - 1).activityInfo;
+
+
+        ComponentName name=new ComponentName(tp.applicationInfo.packageName,
+                tp.name);
+        Intent i=new Intent(Intent.ACTION_MAIN);
+        i.addCategory(Intent.CATEGORY_LAUNCHER);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+                Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+        i.setComponent(name);
+        startActivity(i);
+
+
         initializeFragments();
 
 
