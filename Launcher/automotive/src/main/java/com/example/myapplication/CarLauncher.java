@@ -74,7 +74,8 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
                     mActivityViewReady = true;
 
                     //startMapsInActivityView();
-                   // startTripCompInActivityView();
+                   startTripCompInActivityView();
+                   System.out.print("We are in this bitch");
 
                 }
 
@@ -121,14 +122,13 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
 
         initializeFragments();
 
-
+       mActivityView = findViewById(R.id.tripComp);
         if (mActivityView != null) {
-
             mActivityView.setCallback(mActivityViewCallback);
         }
 
-         launchTripCompActivity();
-        System.out.print("Doing it");
+
+
 
 
     }
@@ -226,11 +226,13 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
         // in the activity view as we will get recreated anyway.
 
         if (!mActivityViewReady || isInMultiWindowMode() || isInPictureInPictureMode()) {
-            System.out.print("We came here");
+            System.out.print("its not ready");
             return;
         }
         if (mActivityView != null) {
             mActivityView.startActivity(getTripCompIntent(), null);
+        System.out.print("We are doing smthinnnng nice");
+
         }
     }
 
@@ -253,7 +255,7 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
         tripComp.setComponent(new ComponentName("com.example.automotive",
                 "com.example.carapibasics.MainActivity"));
 
-       // tripComp.putExtra("layout", R.id.tripComp);
+        tripComp.putExtra("layout", R.id.tripComp);
       //  int layout = getIntent().getIntExtra("layout", R.id.tripComp);
        // setContentView(layout);
         return tripComp;
