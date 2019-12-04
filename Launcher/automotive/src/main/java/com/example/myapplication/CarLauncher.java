@@ -17,11 +17,17 @@
 package com.example.myapplication;
 
 
+import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.ActivityOptions;
 import android.app.ActivityView;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -61,7 +67,7 @@ import java.util.Set;
  * when switching users.
  */
 
-public class CarLauncher extends FragmentActivity /*implements View.OnClickListener*/ {
+public class CarLauncher extends FragmentActivity implements View.OnClickListener {
 
     private static final String TAG = "CarLauncher";
 
@@ -69,11 +75,22 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
     private boolean mActivityViewReady = false;
     private boolean mIsStarted = false;
 
+
+
+
+
     private final ActivityView.StateCallback mActivityViewCallback =
             new ActivityView.StateCallback() {
                 @Override
                 public void onActivityViewReady(ActivityView view) {
+                    System.out.println("yoooooo asuh");
+                    Log.d("asdf","fuckinhell");
                     mActivityViewReady = true;
+//                    ActivityView myActivityView = findViewById(R.id.maps);//.startActivity(launchIntent,null);
+                    Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.android.contacts");
+
+                    mActivityView.startActivity(launchIntent,android.os.Process.myUserHandle());
+
 
                     //startMapsInActivityView();
                 }
@@ -108,6 +125,7 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.car_launcher);
+        mActivityView  = findViewById(R.id.maps);
         // Don't show the maps panel in multi window mode.
         // NOTE: CTS tests for split screen are not compatible with activity views on the default
         // activity of the launcher
@@ -118,10 +136,24 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
 //        }
 
 
+
+
         Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
         mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
 
         List<ResolveInfo> pkgAppsList = getPackageManager().queryIntentActivities( mainIntent, 0);
+        Log.d("first lard","then lard");
+//get a list of installed apps.
+        List<ApplicationInfo> packages = getPackageManager().getInstalledApplications(PackageManager.GET_META_DATA);
+        List<PackageInfo> apps = getPackageManager().getInstalledPackages(0);
+        for (PackageInfo packageInfo : apps) {
+            Log.d(TAG, "Installed package :" + packageInfo.packageName);
+//            Log.d(TAG, "Source dir : " + packageInfo.sou);
+            Log.d(TAG, "Launch Activity :" + getPackageManager().getLaunchIntentForPackage(packageInfo.packageName));
+        }
+        Log.d("lard over","then lard");
+
+
         ActivityInfo tp = pkgAppsList.get(pkgAppsList.size() - 1).activityInfo;
 
 
@@ -139,10 +171,31 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
 
 
 
+
+
+
+
+
+
         if (mActivityView != null) {
 
             mActivityView.setCallback(mActivityViewCallback);
+            System.out.println("seting callback");
         }
+//        ActivityView myActivityView = findViewById(R.id.maps);//.startActivity(launchIntent,null);
+
+//        myActivityView.setCallback(mActivityViewCallback);
+
+//        try{
+//            Context c = myActivityView.getContext();
+//            System.out.println("lol");
+//            System.out.println(c);
+//            System.out.println(launchIntent);
+//            c.startActivity(launchIntent);
+//            System.out.println("diddly borf");
+//        }catch (Exception e){
+//            System.out.println("fuck!!!! "+e.toString());
+//        }
 
 
 
@@ -211,6 +264,20 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
         }
 
         fragmentTransaction.commitNow();
+    }
+
+    public void onClick(View view) {
+        switch(view.getId()) {
+            case R.id.TripComp:
+                Log.d("pressed clickity cliek","click");
+                Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.example.automotive");
+                if (launchIntent != null) {
+                    startActivity(launchIntent);//null pointer check in case package name was not found
+                }else{
+                    System.out.println("fuck");
+                }
+
+        }
     }
 
 
