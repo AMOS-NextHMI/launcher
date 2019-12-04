@@ -21,8 +21,6 @@ import android.app.ActivityManager;
 import android.app.ActivityView;
 import android.content.ComponentName;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,7 +32,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.android.car.carlauncher.R;
 
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -118,21 +115,30 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
 //        }
 
 
-        Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
+     /*  //THESE ARE THE DIFFERENT ATTEMPTS I MADE:
+      Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
         mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
 
         List<ResolveInfo> pkgAppsList = getPackageManager().queryIntentActivities( mainIntent, 0);
         ActivityInfo tp = pkgAppsList.get(pkgAppsList.size() - 1).activityInfo;
+        Intent k = getPackageManager().getLaunchIntentForPackage("com.example.automotive");
+        if (k!=null){
+            System.out.print("**************");
+        System.out.print(k.getClass();}
+        //System.out.print(tp.applicationInfo.packageName);
+        System.out.print("**************");
+        //System.out.print(tp.name);
+
+        //System.out.print("**************");*/
 
 
-        ComponentName name=new ComponentName(tp.applicationInfo.packageName,
-                tp.name);
-        Intent i=new Intent(Intent.ACTION_MAIN);
-        i.addCategory(Intent.CATEGORY_LAUNCHER);
-        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+        Intent tripComp=new Intent(Intent.ACTION_MAIN);
+        tripComp.addCategory(Intent.CATEGORY_LAUNCHER);
+        tripComp.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
                 Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
-        i.setComponent(name);
-        startActivity(i);
+        tripComp.setComponent(new ComponentName("com.example.automotive",
+                "com.example.carapibasics.MainActivity"));
+        startActivity(tripComp);
 
 
         initializeFragments();
