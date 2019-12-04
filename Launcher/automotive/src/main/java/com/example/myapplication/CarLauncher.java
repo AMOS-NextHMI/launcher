@@ -31,14 +31,22 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.DragEvent;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.android.car.carlauncher.R;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 import java.util.Set;
@@ -67,13 +75,14 @@ import java.util.Set;
  * when switching users.
  */
 
-public class CarLauncher extends FragmentActivity implements View.OnClickListener {
+public class CarLauncher extends FragmentActivity {
 
     private static final String TAG = "CarLauncher";
 
     private ActivityView mActivityView;
     private boolean mActivityViewReady = false;
     private boolean mIsStarted = false;
+//    private LinearLayout tripCompLayout;
 
 
 
@@ -123,6 +132,7 @@ public class CarLauncher extends FragmentActivity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
 
 
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.car_launcher);
         mActivityView  = findViewById(R.id.maps);
@@ -135,7 +145,50 @@ public class CarLauncher extends FragmentActivity implements View.OnClickListene
 //
 //        }
 
+        EditText typeText = findViewById(R.id.nameOfAppRN);
+        TextView filledInName = findViewById(R.id.filledInName);
+        typeText.addTextChangedListener(new TextWatcher() {
 
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                if(s.length() != 0){
+                    boolean foundOne = false;
+                    List<PackageInfo> apps = getPackageManager().getInstalledPackages(0);
+                    for (PackageInfo packageInfo : apps) {
+                        if (packageInfo.packageName.contains(s)){
+                            filledInName.setText(packageInfo.packageName);
+                            foundOne = true;
+                            break;
+                        }
+
+
+                    }
+                    if (!foundOne){
+                        filledInName.setText("N/A");
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        findViewById(R.id.TripComp).setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                System.out.println("woah there boris");
+                return true;
+            }
+        });
 
 
         Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
@@ -144,7 +197,6 @@ public class CarLauncher extends FragmentActivity implements View.OnClickListene
         List<ResolveInfo> pkgAppsList = getPackageManager().queryIntentActivities( mainIntent, 0);
         Log.d("first lard","then lard");
 //get a list of installed apps.
-        List<ApplicationInfo> packages = getPackageManager().getInstalledApplications(PackageManager.GET_META_DATA);
         List<PackageInfo> apps = getPackageManager().getInstalledPackages(0);
         for (PackageInfo packageInfo : apps) {
             Log.d(TAG, "Installed package :" + packageInfo.packageName);
@@ -270,7 +322,14 @@ public class CarLauncher extends FragmentActivity implements View.OnClickListene
         switch(view.getId()) {
             case R.id.TripComp:
                 Log.d("pressed clickity cliek","click");
-                Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.example.automotive");
+                TextView filledInName = findViewById(R.id.filledInName);
+                Intent launchIntent;
+                if (filledInName.getText().equals("N/A")){
+                    launchIntent = getPackageManager().getLaunchIntentForPackage("com.example.automotive");
+                }else{
+                    launchIntent = getPackageManager().getLaunchIntentForPackage((String) filledInName.getText());
+                }
+
                 if (launchIntent != null) {
                     startActivity(launchIntent);//null pointer check in case package name was not found
                 }else{
@@ -279,6 +338,11 @@ public class CarLauncher extends FragmentActivity implements View.OnClickListene
 
         }
     }
+
+
+
+
+
 
 
 //

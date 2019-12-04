@@ -19,6 +19,7 @@
     xmlns:tools="http://schemas.android.com/tools" package="com.android.car.carlauncher" > <!--android:sharedUserId="android.uid.system"-->
     <uses-permission android:name="android.permission.INJECT_EVENTS"
         tools:ignore="ProtectedPermissions" />
+
     <!-- System permission to get app usage data -->
     <uses-feature
         android:name="android.software.leanback"
@@ -56,6 +57,7 @@
     <application
         android:icon="@drawable/ic_launcher_home"
         android:label="@string/app_title"
+        android:sharedUserId="android.uid.system"
         android:theme="@style/Theme.Launcher">
 
         <activity
