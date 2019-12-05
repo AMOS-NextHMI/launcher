@@ -30,6 +30,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -38,6 +39,7 @@ import android.view.DragEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -172,6 +174,17 @@ public class CarLauncher extends FragmentActivity {
                     }
                     if (!foundOne){
                         filledInName.setText("N/A");
+                    }else{
+                        try
+                        {
+                            ImageView iconView = findViewById(R.id.iconOfApp);
+                            Drawable icon = getPackageManager().getApplicationIcon((String)filledInName.getText());
+                            iconView.setImageDrawable(icon);
+                        }
+                        catch (PackageManager.NameNotFoundException e)
+                        {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }
