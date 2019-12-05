@@ -24,17 +24,9 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-
-import android.widget.Button;
-
 import android.widget.FrameLayout;
-import android.widget.TextView;
-
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.leanback.app.PlaybackSupportFragment;
-
-import com.android.car.carlauncher.R;
 
 import java.util.Set;
 

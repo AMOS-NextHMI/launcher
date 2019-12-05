@@ -27,8 +27,6 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.android.car.carlauncher.R;
-
 /** {@link Fragment} which displays relevant information that changes over time. */
 public class ContextualFragment extends Fragment {
 

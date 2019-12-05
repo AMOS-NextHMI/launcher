@@ -10,7 +10,6 @@ import android.os.IBinder
 import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.android.car.carlauncher.R
 
 class TripComp : AppCompatActivity() {
 

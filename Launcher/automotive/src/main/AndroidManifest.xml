@@ -16,7 +16,7 @@
   -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 
-    xmlns:tools="http://schemas.android.com/tools" package="com.android.car.carlauncher" > <!--android:sharedUserId="android.uid.system"-->
+    xmlns:tools="http://schemas.android.com/tools" package="com.example.myapplication" > <!--android:sharedUserId="android.uid.system"-->
 
     <!-- System permission to get app usage data -->
     <uses-feature
