@@ -46,7 +46,8 @@ import android.widget.TextView;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.android.car.carlauncher.R;
+//import com.android.car.carlauncher.R;
+
 
 import org.w3c.dom.Text;
 
@@ -137,7 +138,7 @@ public class CarLauncher extends FragmentActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.car_launcher);
-        mActivityView  = findViewById(R.id.maps);
+//        mActivityView  = findViewById(R.id.maps);
         // Don't show the maps panel in multi window mode.
         // NOTE: CTS tests for split screen are not compatible with activity views on the default
         // activity of the launcher
@@ -146,6 +147,9 @@ public class CarLauncher extends FragmentActivity {
 //        } else {
 //
 //        }
+        System.out.println("about to launch");
+
+        System.out.println("gone and launched dat");
 
         EditText typeText = findViewById(R.id.nameOfAppRN);
         TextView filledInName = findViewById(R.id.filledInName);
@@ -160,6 +164,7 @@ public class CarLauncher extends FragmentActivity {
             @Override
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
+                Log.d("borf","diddly text change");
                 if(s.length() != 0){
                     boolean foundOne = false;
                     List<PackageInfo> apps = getPackageManager().getInstalledPackages(0);
@@ -287,8 +292,11 @@ public class CarLauncher extends FragmentActivity {
     protected void onStart() {
         super.onStart();
 
-        Log.d(TAG, "onStart: Hello World");
+        Log.d(TAG, "onStart: Hello Worlddd");
         System.out.println("hello again");
+        Intent tripCompIntent = new Intent(this,TestComp.class);
+
+        startActivity(tripCompIntent,tripCompIntent.getExtras());
         mIsStarted = true;
     }
 
