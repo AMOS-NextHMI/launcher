@@ -32,7 +32,7 @@ adb_output="$(adb get-state)"
 if [[ ! "$adb_output" =~ "device" ]]
 then
   echo "Starting the emulator...."
-  $AMOS_EMULATOR_PATH -avd $AMOS_EMULATOR_NAME -writable-system &
+  $AMOS_EMULATOR_PATH -avd $AMOS_EMULATOR_NAME -writable-system -wipe-data & 
 fi
 
 

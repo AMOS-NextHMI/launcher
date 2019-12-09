@@ -20,11 +20,24 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        debug {
+            storeFile file(project.property("Launcher.signing"))
+            storePassword project.property("Launcher.signing.password")
+            keyAlias project.property("Launcher.signing.alias")
+            keyPassword project.property("Launcher.signing.password")
+        }
+    }
+
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            signingConfig signingConfigs.debug
         }
     }
     compileOptions {
@@ -53,6 +66,7 @@ dependencies {
 
     def leanback_version = "1.0.0"
 
+    implementation 'androidx.car:car:1.0.0-alpha7'
     implementation "androidx.leanback:leanback:$leanback_version"
     implementation "androidx.core:core-ktx:+"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0"

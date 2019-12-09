@@ -31,7 +31,7 @@ import android.widget.FrameLayout;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.android.car.carlauncher.R;
+
 
 import java.util.Set;
 
@@ -74,7 +74,7 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
                     mActivityViewReady = true;
 
                     //startMapsInActivityView();
-                   startTripCompInActivityView();
+                    startTripCompInActivityView();
 
                 }
 
@@ -121,7 +121,7 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
 
         initializeFragments();
 
-       mActivityView = findViewById(R.id.tripComp);
+        mActivityView = findViewById(R.id.tripComp);
         if (mActivityView != null) {
             mActivityView.setCallback(mActivityViewCallback);
         }
@@ -138,14 +138,14 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
         Set<String> categories = intent.getCategories();
         if (categories != null && categories.size() == 1 && categories.contains(
                 Intent.CATEGORY_APP_MAPS)) {
-      //      launchMapsActivity();
+            //      launchMapsActivity();
         }
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-       // startMapsInActivityView();
+        // startMapsInActivityView();
         startTripCompInActivityView();
     }
 
@@ -179,10 +179,10 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
     }
 
     private void initializeFragments() {
-       // PlaybackSupportFragment playbackFragment = new PlaybackSupportFragment();
+        // PlaybackSupportFragment playbackFragment = new PlaybackSupportFragment();
         ContextualFragment contextualFragment = null;
 
-       FrameLayout contextual = findViewById(R.id.contextual);
+        FrameLayout contextual = findViewById(R.id.contextual);
 
         if(contextual != null) {
             contextualFragment = new ContextualFragment();
@@ -197,7 +197,7 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
         fragmentTransaction.commitNow();
     }
 
-//    private void startMapsInActivityView() {
+    //    private void startMapsInActivityView() {
 //        // If we happen to be be resurfaced into a multi display mode we skip launching content
 //        // in the activity view as we will get recreated anyway.
 //        if (!mActivityViewReady || isInMultiWindowMode() || isInPictureInPictureMode()) {
@@ -230,7 +230,7 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
         }
         if (mActivityView != null) {
             mActivityView.startActivity(getTripCompIntent(), null);
-        System.out.print("We are doing smthinnnng nice");
+            System.out.print("We are doing smthinnnng nice");
 
         }
     }
@@ -241,7 +241,7 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
         final ActivityOptions options = ActivityOptions.makeBasic();
         //options.setLaunchDisplayId(getDisplay().getDisplayId());
         options.setLaunchDisplayId(0);
-      //  startActivity(getTripCompIntent(), options.toBundle());
+        //  startActivity(getTripCompIntent(), options.toBundle());
     }
 
 
@@ -255,8 +255,8 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
                 "com.example.carapibasics.MainActivity"));
 
         tripComp.putExtra("layout", R.id.tripComp);
-      //  int layout = getIntent().getIntExtra("layout", R.id.tripComp);
-       // setContentView(layout);
+        //  int layout = getIntent().getIntExtra("layout", R.id.tripComp);
+        // setContentView(layout);
         return tripComp;
     }
 
