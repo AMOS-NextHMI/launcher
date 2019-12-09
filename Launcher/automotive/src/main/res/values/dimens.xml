@@ -40,12 +40,12 @@
     <item name="app_icon_opacity" type="dimen" format="float">1.0</item>
     <!-- Gap between top of screen (statusbar) and header content -->
     <dimen name="app_grid_header_margin">@*android:dimen/car_padding_4</dimen>
-    <dimen name="panel_margin">@*android:dimen/car_margin</dimen>
+    <dimen name="panel_margin">@dimen/car_margin</dimen>
     <!-- Height of the text and exit button on the app selection screen -->
-    <dimen name="app_bar_height">@*android:dimen/car_app_bar_height</dimen>
-    <dimen name="icon_size">@*android:dimen/car_primary_icon_size</dimen>
-    <dimen name="recent_apps_row_height">@*android:dimen/car_list_divider_height</dimen>
-    <dimen name="app_grid_touch_target_size">@*android:dimen/car_touch_target_size</dimen>
+    <dimen name="app_bar_height">@dimen/car_app_bar_height</dimen>
+    <dimen name="icon_size">@dimen/car_primary_icon_size</dimen>
+    <dimen name="recent_apps_row_height">@dimen/car_list_divider_height</dimen>
+    <dimen name="app_grid_touch_target_size">@dimen/car_touch_target_size</dimen>
     <!-- Padding around the touch target (makes ripple look better) -->
     <dimen name="app_touch_target_padding">@*android:dimen/car_padding_1</dimen>
     <dimen name="app_touch_target_margin">@*android:dimen/car_padding_2</dimen>

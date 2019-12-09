@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 android_app {
     name: "AIVILauncher",
     srcs: ["java/**/*.java", "java/**/*.kt"],
