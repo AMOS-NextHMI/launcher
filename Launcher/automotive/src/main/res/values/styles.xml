@@ -32,7 +32,7 @@
 
     <style name="HorizontalLineDivider">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@*android:dimen/car_list_divider_height</item>
+        <item name="android:layout_height">@dimen/car_list_divider_height</item>
         <item name="android:background">@*android:color/car_list_divider</item>
     </style>
 </resources>
