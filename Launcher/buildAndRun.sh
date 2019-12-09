@@ -5,7 +5,7 @@ then
   export $(xargs <.env)
 fi
 
-if [ -z ${AMOS_EMULATOR_PATH+x} ]; then AMOS_EMULATOR_PATH=$ANDROID_SDK_ROOT"/emulator/emulator"; fi
+if [ -z ${AMOS_EMULATOR_PATH+x} ]; then AMOS_EMULATOR_PATH="/Users/ferielamira/Library/Android/sdk/emulator/emulator"; fi
 if [ -z ${AMOS_EMULATOR_NAME+x} ]; then AMOS_EMULATOR_NAME="Rooted"; fi
 if [ -z ${AMOS_LAUNCHER_DIR_NAME+x} ]; then AMOS_LAUNCHER_DIR_NAME="Carp"; fi
 if [ -z ${AMOS_LAUNCHER_APP_NAME+x} ]; then AMOS_LAUNCHER_APP_NAME="com.example.myapplication"; fi
@@ -32,7 +32,7 @@ adb_output="$(adb get-state)"
 if [[ ! "$adb_output" =~ "device" ]]
 then
   echo "Starting the emulator...."
-  $AMOS_EMULATOR_PATH -avd $AMOS_EMULATOR_NAME -writable-system &
+  $AMOS_EMULATOR_PATH -avd $AMOS_EMULATOR_NAME -writable-system -wipe-data & 
 fi
 
 

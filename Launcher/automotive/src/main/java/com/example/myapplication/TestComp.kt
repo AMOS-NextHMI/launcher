@@ -1,5 +1,5 @@
 package com.example.myapplication
- import android.car.Car
+import android.car.Car
 import android.car.hardware.CarSensorEvent
 import android.car.hardware.CarSensorManager
 import android.content.ComponentName
@@ -11,7 +11,7 @@ import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
-class TripComp : AppCompatActivity() {
+class TestComp : AppCompatActivity() {
 
     private lateinit var car : Car
     private val permissions = arrayOf(Car.PERMISSION_SPEED, Car.PERMISSION_POWERTRAIN)
@@ -19,21 +19,22 @@ class TripComp : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
+        Log.d("why wont","this work")
         setContentView(R.layout.car_launcher)
+        println("zxcvbnm");
 
-        println("fuck right off")
         initCar()
     }
 
     override fun onStart() {
         super.onStart()
-        println("yoooo")
+        println("schwupps")
     }
 
     override fun onResume() {
         super.onResume()
+        println("yoooo")
 
-        println("schwupps")
         var allPermissionsGranted = true
         for (perm in permissions) {
             if (checkSelfPermission(perm) != PackageManager.PERMISSION_GRANTED) {
@@ -156,7 +157,7 @@ class TripComp : AppCompatActivity() {
 
                     var speedTextView = findViewById<TextView>(R.id.speedTextView)
 
-                        speedTextView.text = "Speed: " + carSensorEvent.floatValues[0].toString() + "km/h"
+                    speedTextView.text = "Speed: " + carSensorEvent.floatValues[0].toString() + "km/h"
 
 
 

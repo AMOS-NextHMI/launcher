@@ -59,33 +59,10 @@ android {
 
 ## Running the app on the emulator while developing
 
-**You have to run the app via this method otherwise you will no obtain system level permissions and get an error**
+The repository contains now the systems keys to access all permissions of the system. They lay in the platform.keystore in the root directory.
 
-0.1 Check if the emulator_path in the script works for you and otherwise change it to the right path, then change the emulator_name to the name of your rooted emulator. After that create the directory on your emulator in which you want the launcher-apk to sit (inside the /system/priv-app folder), by starting the emulator with the following command:
-```bash
-$ANDROID_SDK_ROOT"/emulator/emulator" -avd $emulator_name -writable-system
-```
-then, after the emulator has started, get into the adb shell and create the folder:
-```bash
-adb remount
-adb shell
-cd /system/priv-app
-mkdir Carp
-```
-0.2 Make the script executable on UNIX Sytems
-```bash
-chmod +x buildAndRun.sh
-```
-0.3 Modify the appropiate variables in your .env file to adjust the script to your system/needs
-```bash
-AMOS_EMULATOR_PATH=$ANDROID_SDK_ROOT"/emulator/emulator"
-AMOS_EMULATOR_NAME="Rooted"
-AMOS_LAUNCHER_DIR_NAME="Carp"
-AMOS_LAUNCHER_APP_NAME="com.example.myapplication"
-```
-The .env file is not tracked and you have to create it yourself the first time.
-The default values of the script are the ones shown here in the example.
+A signingConfig was added for the automotive debug build in the automotive/build.gradle to use the projects signing properties which are set in the Launcher/gradle.properties file.
 
-Please note, that the folder name has to be the same as the AMOS_LAUNCHER_DIR_NAME variable in the script. So if you part from the one inside the script, you have to modify this var.
-1. You **have** to start the emulator via the buildAndRun script **otherwise the system is not writable** and you will get an error
-2. After the script started the emulator you can apply changes that you made in the code via the "Apply Changes and Restart Activity" ![icon image](img/readme/apply-changes-and-run-activity.png) (Ctrl+F10) **Do not press the usual "Run" Button, it will result in a premission error**
+**You should now be able to run the app normally on the emulator without using any external tools and have signature rights, the buildAndRun script is obsolete**
+
+You can add a release config or just use the keystore file with the passwords in the default apk signing process.
