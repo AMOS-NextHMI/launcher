@@ -16,7 +16,6 @@
 
 package com.example.myapplication;
 
-
 import android.app.ActivityManager;
 import android.app.ActivityView;
 import android.content.Intent;
@@ -25,11 +24,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
+
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import java.util.Set;
-
 /**
  * Note by Wolf Lickefett: the ActivityView does not seem to be documented
  * but should exist in the android project
@@ -53,15 +52,11 @@ import java.util.Set;
  * switching away from and back to the current user. To avoid a crash, this Activity will finish
  * when switching users.
  */
-
 public class CarLauncher extends FragmentActivity /*implements View.OnClickListener*/ {
-
     private static final String TAG = "CarLauncher";
-
     private ActivityView mActivityView;
     private boolean mActivityViewReady = false;
     private boolean mIsStarted = false;
-
     private final ActivityView.StateCallback mActivityViewCallback =
             new ActivityView.StateCallback() {
                 @Override
@@ -88,14 +83,11 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
                 }
             };
 
-    public void sendMessage(View view){
-
+    public void sendMessage(View view) {
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.car_launcher);
         // Don't show the maps panel in multi window mode.
@@ -106,19 +98,13 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
 //        } else {
 //
 //        }
-
-
         initializeFragments();
-        Intent tripCompIntent = new Intent(this,TripComp.class);
-
-        startActivity(tripCompIntent,tripCompIntent.getExtras());
-        Log.d("oncreate","tripComp activity was started");
-
+        Intent tripCompIntent = new Intent(this, TripComp.class);
+        startActivity(tripCompIntent, tripCompIntent.getExtras());
+        Log.d("oncreate", "tripComp activity was started");
         if (mActivityView != null) {
             mActivityView.setCallback(mActivityViewCallback);
         }
-
-
     }
 
     @Override
@@ -127,20 +113,19 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
         Set<String> categories = intent.getCategories();
         if (categories != null && categories.size() == 1 && categories.contains(
                 Intent.CATEGORY_APP_MAPS)) {
-      //      launchMapsActivity();
+            //      launchMapsActivity();
         }
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-       // startMapsInActivityView();
+        // startMapsInActivityView();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-
         Log.d(TAG, "onStart: Hello World");
         System.out.println("hello again");
         mIsStarted = true;
@@ -167,27 +152,19 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
     }
 
     private void initializeFragments() {
-       // PlaybackSupportFragment playbackFragment = new PlaybackSupportFragment();
+        // PlaybackSupportFragment playbackFragment = new PlaybackSupportFragment();
         ContextualFragment contextualFragment = null;
-
-       FrameLayout contextual = findViewById(R.id.contextual);
-
-        if(contextual != null) {
+        FrameLayout contextual = findViewById(R.id.contextual);
+        if (contextual != null) {
             contextualFragment = new ContextualFragment();
         }
         FragmentTransaction fragmentTransaction =
                 getSupportFragmentManager().beginTransaction();
-
-        if(contextual != null) {
+        if (contextual != null) {
             fragmentTransaction.replace(R.id.contextual, contextualFragment);
         }
-
         fragmentTransaction.commitNow();
     }
-
-
-
-
 //    private void startMapsInActivityView() {
 //        // If we happen to be be resurfaced into a multi display mode we skip launching content
 //        // in the activity view as we will get recreated anyway.
@@ -211,7 +188,4 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
 //    private Intent getMapsIntent() {
 //        return Intent.makeMainSelectorActivity(Intent.ACTION_MAIN, Intent.CATEGORY_APP_MAPS);
 //    }
-
-
-
 }
