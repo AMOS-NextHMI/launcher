@@ -25,13 +25,10 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.FrameLayout;
 
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
-
-
 
 import java.util.Set;
 
@@ -74,6 +71,7 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
                     mActivityViewReady = true;
 
                     //startMapsInActivityView();
+
                     startTripCompInActivityView();
 
                 }
@@ -98,9 +96,6 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
                 }
             };
 
-    public void sendMessage(View view){
-
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,6 +120,10 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
         if (mActivityView != null) {
             mActivityView.setCallback(mActivityViewCallback);
         }
+        else{
+        //  getTripCompIntent();
+        //  launchTripCompActivity();
+        }
 
 
 
@@ -145,7 +144,7 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
     @Override
     protected void onRestart() {
         super.onRestart();
-        // startMapsInActivityView();
+
         startTripCompInActivityView();
     }
 
@@ -153,8 +152,8 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
     protected void onStart() {
         super.onStart();
 
-        Log.d(TAG, "onStart: Hello World, IM FERIEL");
-        System.out.println("hello again");
+        Log.d(TAG, "onStart: Hello World");
+
         mIsStarted = true;
     }
 
@@ -197,6 +196,56 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
         fragmentTransaction.commitNow();
     }
 
+
+    private void startTripCompInActivityView() {
+        // If we happen to be be resurfaced into a multi display mode we skip launching content
+        // in the activity view as we will get recreated anyway.
+
+        if (!mActivityViewReady || isInMultiWindowMode() || isInPictureInPictureMode()) {
+            return;
+        }
+        if (mActivityView != null && getTripCompIntent()!=null ) {
+            Log.d(TAG, "SELINA SCHRÖTER LOVES DICK");
+            mActivityView.startActivity(getTripCompIntent(), null);
+
+
+        }
+    }
+
+    private void launchTripCompActivity() {
+        // Make sure the Activity launches on the current display instead of in the ActivityView
+        // virtual display.
+        final ActivityOptions options = ActivityOptions.makeBasic();
+
+//        //options.setLaunchDisplayId(getDisplay().getDisplayId());
+        options.setLaunchDisplayId(0);
+
+        if(getTripCompIntent()==null){
+            System.out.print("I AM MISTER PROBLEM");
+        }
+
+          startActivity(getTripCompIntent(), options.toBundle());
+    }
+
+
+
+
+    private Intent getTripCompIntent() {
+
+        Intent tripComp=new Intent(Intent.ACTION_MAIN);
+        tripComp.addCategory(Intent.CATEGORY_LAUNCHER);
+        tripComp.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+                Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+        tripComp.setComponent(new ComponentName("com.example.automotive",
+                "com.example.carapibasics.MainActivity"));
+
+      //   tripComp.putExtra("layout", R.id.tripComp);
+       // int layout = getIntent().getIntExtra("layout", R.id.tripComp);
+        //setContentView(findViewById(R.id.tripComp));
+
+        return tripComp;
+    }
+
     //    private void startMapsInActivityView() {
 //        // If we happen to be be resurfaced into a multi display mode we skip launching content
 //        // in the activity view as we will get recreated anyway.
@@ -220,46 +269,5 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
 //    private Intent getMapsIntent() {
 //        return Intent.makeMainSelectorActivity(Intent.ACTION_MAIN, Intent.CATEGORY_APP_MAPS);
 //    }
-    private void startTripCompInActivityView() {
-        // If we happen to be be resurfaced into a multi display mode we skip launching content
-        // in the activity view as we will get recreated anyway.
-
-        if (!mActivityViewReady || isInMultiWindowMode() || isInPictureInPictureMode()) {
-
-            return;
-        }
-        if (mActivityView != null) {
-            mActivityView.startActivity(getTripCompIntent(), null);
-            System.out.print("We are doing smthinnnng nice");
-
-        }
-    }
-
-    private void launchTripCompActivity() {
-        // Make sure the Activity launches on the current display instead of in the ActivityView
-        // virtual display.
-        final ActivityOptions options = ActivityOptions.makeBasic();
-        //options.setLaunchDisplayId(getDisplay().getDisplayId());
-        options.setLaunchDisplayId(0);
-        //  startActivity(getTripCompIntent(), options.toBundle());
-    }
-
-
-    private Intent getTripCompIntent() {
-
-        Intent tripComp=new Intent(Intent.ACTION_MAIN);
-        tripComp.addCategory(Intent.CATEGORY_LAUNCHER);
-        tripComp.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
-                Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
-        tripComp.setComponent(new ComponentName("com.example.automotive",
-                "com.example.carapibasics.MainActivity"));
-
-        tripComp.putExtra("layout", R.id.tripComp);
-        //  int layout = getIntent().getIntExtra("layout", R.id.tripComp);
-        // setContentView(layout);
-        return tripComp;
-    }
-
-
 
 }

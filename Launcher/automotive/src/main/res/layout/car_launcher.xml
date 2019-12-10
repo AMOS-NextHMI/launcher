@@ -89,13 +89,10 @@
 
             android:orientation="vertical">
 
-
             <ActivityView
-                android:id="@+id/tripComp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-
-                />
+            android:id="@+id/tripComp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
 
         </LinearLayout>
@@ -118,12 +115,12 @@
 <!--            app:layout_constraintStart_toEndOf="@+id/start_edge"-->
 <!--            app:layout_constraintTop_toBottomOf="@+id/top_edge">-->
 <!--            <ActivityView-->
-<!--                android:id="@+id/maps"-->
-<!--                android:background="@color/green"-->
+<!--                android:id="@+id/tripComp"-->
 <!--                android:layout_width="match_parent"-->
 <!--                android:layout_height="match_parent"-->
 <!--                android:resizeableActivity="true"-->
 <!--                android:allowEmbedded="true"/>-->
+
 <!--        </androidx.cardview.widget.CardView>-->
 
 
