@@ -17,12 +17,14 @@
 package com.example.myapplication;
 
 
+import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.app.ActivityOptions;
 import android.app.ActivityView;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.FrameLayout;
@@ -83,18 +85,19 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
 
 
 
-                public void onTaskMovedToFront(int taskId) {
-                    try {
-                        if (mIsStarted) {
-                            ActivityManager am =
-                                    (ActivityManager) getSystemService(ACTIVITY_SERVICE);
-                            am.moveTaskToFront(CarLauncher.this.getTaskId(), /* flags= */ 0);
-                        }
-                    } catch (RuntimeException e) {
-                        Log.w(TAG, "Failed to move CarLauncher to front.");
-                    }
-                }
+//                public void onTaskMovedToFront(int taskId) {
+//                    try {
+//                        if (mIsStarted) {
+//                            ActivityManager am =
+//                                    (ActivityManager) getSystemService(ACTIVITY_SERVICE);
+//                            am.moveTaskToFront(CarLauncher.this.getTaskId(), /* flags= */ 0);
+//                        }
+//                    } catch (RuntimeException e) {
+//                        Log.w(TAG, "Failed to move CarLauncher to front.");
+//                    }
+//                }
             };
+
 
 
     @Override
@@ -106,28 +109,16 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
         // Don't show the maps panel in multi window mode.
         // NOTE: CTS tests for split screen are not compatible with activity views on the default
         // activity of the launcher
-//        if (isInMultiWindowMode() || isInPictureInPictureMode()) {
-//            setContentView(R.layout.car_launcher_multiwindow);
-//        } else {
-//
-//        }
+        if (isInMultiWindowMode() || isInPictureInPictureMode()) {
+            setContentView(R.layout.car_launcher_multiwindow);
+        } else {
+           // initializeFragments();
+            mActivityView = findViewById(R.id.tripComp);
 
-
-
-        initializeFragments();
-
-        mActivityView = findViewById(R.id.tripComp);
-        if (mActivityView != null) {
-            mActivityView.setCallback(mActivityViewCallback);
+            if (mActivityView != null) {
+                mActivityView.setCallback(mActivityViewCallback);
+            }
         }
-        else{
-        //  getTripCompIntent();
-        //  launchTripCompActivity();
-        }
-
-
-
-
 
     }
 
@@ -138,6 +129,7 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
         if (categories != null && categories.size() == 1 && categories.contains(
                 Intent.CATEGORY_APP_MAPS)) {
             //      launchMapsActivity();
+            launchTripCompActivity();
         }
     }
 
@@ -153,6 +145,7 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
         super.onStart();
 
         Log.d(TAG, "onStart: Hello World");
+        mIsStarted=true;
 
         mIsStarted = true;
     }
@@ -197,6 +190,7 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
     }
 
 
+    @SuppressLint("NewApi")
     private void startTripCompInActivityView() {
         // If we happen to be be resurfaced into a multi display mode we skip launching content
         // in the activity view as we will get recreated anyway.
@@ -205,7 +199,7 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
             return;
         }
         if (mActivityView != null && getTripCompIntent()!=null ) {
-            Log.d(TAG, "SELINA SCHRÖTER LOVES DICK");
+
             mActivityView.startActivity(getTripCompIntent(), null);
 
 
