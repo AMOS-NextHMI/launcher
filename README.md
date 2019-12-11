@@ -7,7 +7,7 @@
 
 The repo also supplies libraries which provide access to the hidden android api and the android car api.
 To import them in Android Studio you have to do the following:
-1. Copy the files in the extra-lib folder into <sdk_folder>\platforms\<api_level=28 for this project>\optional
+1. Copy the files in the extra-lib folder into <sdk_folder>\platforms\<api_level=29 for this project>\optional
 2. Extend the optional.json file inside this directory and add the following fields:
 ```json
 {
