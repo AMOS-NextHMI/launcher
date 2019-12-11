@@ -18,13 +18,11 @@ package com.example.myapplication;
 
 
 import android.annotation.SuppressLint;
-import android.app.ActivityManager;
 import android.app.ActivityOptions;
 import android.app.ActivityView;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.FrameLayout;
@@ -211,7 +209,7 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
         // virtual display.
         final ActivityOptions options = ActivityOptions.makeBasic();
 
-//        //options.setLaunchDisplayId(getDisplay().getDisplayId());
+        //options.setLaunchDisplayId(getDisplay().getDisplayId());
         options.setLaunchDisplayId(0);
 
         if(getTripCompIntent()==null){
