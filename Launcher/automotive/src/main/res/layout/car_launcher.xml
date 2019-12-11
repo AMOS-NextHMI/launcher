@@ -67,6 +67,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal" >
+<!--        <Button-->
+<!--            android:id="@+id/button1"-->
+<!--            android:layout_width="fill_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="lol"-->
+<!--            android:onClick="onClickBtn" />-->
 
 
         <LinearLayout
@@ -74,6 +80,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:clickable="true"
+            android:onClick="myOnClick"
             android:orientation="vertical">
 
 
@@ -115,43 +123,24 @@
         </LinearLayout>
 
 
-    <LinearLayout
+<!--    <LinearLayout-->
 
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
-        <include android:id="@+id/tripCompLayout" layout="@layout/comp_layout" />
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_weight="1"-->
+<!--        android:orientation="vertical">-->
+<!--        <include android:id="@+id/tripCompLayout" layout="@layout/comp_layout" />-->
 
 
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
 
 
 <!--CAUSES: Requires INJECT_EVENTS permission-->
-<!--        <androidx.cardview.widget.CardView-->
-<!--            style="@style/CardViewStyle"-->
-<!--            android:background="@color/green"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_margin="@dimen/main_screen_widget_margin"-->
-<!--            app:layout_constraintBottom_toTopOf="@+id/bottom_edge"-->
-<!--            app:layout_constraintEnd_toStartOf="@+id/divider_vertical"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/start_edge"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/top_edge">-->
-<!--            <ActivityView-->
-<!--                android:id="@+id/maps"-->
-<!--                android:background="@color/green"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:resizeableActivity="true"-->
-<!--                android:allowEmbedded="true"/>-->
-<!--        </androidx.cardview.widget.CardView>-->
 
 
-<!--            <FrameLayout-->
+        <!--            <FrameLayout-->
 <!--                android:id="@+id/playback"-->
 <!--                android:layout_width="0dp"-->
 <!--                android:layout_height="0dp"-->
@@ -162,7 +151,30 @@
 <!--                app:layout_constraintTop_toBottomOf="@+id/divider_horizontal"/>-->
 
 
+        <LinearLayout
+            android:id="@+id/activityViewCont"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/main_screen_widget_margin"
+            android:layout_weight="1"
+            android:background="@color/green"
+            android:clickable="true"
+            android:onClick="myOnClick"
+            android:orientation="horizontal"
+            android:resizeableActivity="true"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_edge"
+            app:layout_constraintEnd_toStartOf="@+id/divider_vertical"
+            app:layout_constraintStart_toEndOf="@+id/start_edge"
+            app:layout_constraintTop_toBottomOf="@+id/top_edge">
 
+            <ActivityView
+                android:id="@+id/tokenActivityView"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:allowEmbedded="true"
+                android:background="@color/green"
+                android:resizeableActivity="true" />
+        </LinearLayout>
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="0dp"

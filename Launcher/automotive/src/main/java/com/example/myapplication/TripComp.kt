@@ -60,6 +60,7 @@ class TripComp : AppCompatActivity() {
         super.onPause()
     }
 
+
     private fun initCar() {
         if (!packageManager.hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE)) {
             return

@@ -16,13 +16,14 @@
 
 package com.example.myapplication;
 
-
+import java.util.InputMismatchException;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityOptions;
 import android.app.ActivityView;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
@@ -42,6 +43,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
@@ -78,15 +80,31 @@ import java.util.Set;
  * when switching users.
  */
 
-public class CarLauncher extends FragmentActivity {
+public class CarLauncher extends FragmentActivity implements LinearLayout.OnClickListener {
 
     private static final String TAG = "CarLauncher";
+    private static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_RESET = "\u001B[0m";
 
     private ActivityView mActivityView;
     private boolean mActivityViewReady = false;
     private boolean mIsStarted = false;
-//    private LinearLayout tripCompLayout;
 
+    private boolean activityOn = false;
+    private int packagIter = 0;
+    public void myOnClick(View v) {
+        Log.d("DEBUG", "CLICKED " + v.getId());
+        List<PackageInfo> apps = getPackageManager().getInstalledPackages(0);
+        Intent launchIntent = getPackageManager().getLaunchIntentForPackage((String) apps.get(packagIter).packageName);
+        if (launchIntent != null) {
+            mActivityView.startActivity(launchIntent,android.os.Process.myUserHandle());
+            System.out.println("old college try on :"+(String) apps.get(packagIter).packageName);
+        }else{
+            System.out.println(ANSI_RED+"\n\nnull on :"+(String) apps.get(packagIter).packageName+"\n\n"+ANSI_RESET);
+//            Toast.makeText(this, "null on"+(String) apps.get(packagIter).packageName, Toast.LENGTH_LONG).show();
+        }
+        packagIter += 1;
+    }
 
 
 
@@ -97,11 +115,13 @@ public class CarLauncher extends FragmentActivity {
                 public void onActivityViewReady(ActivityView view) {
                     System.out.println("yoooooo asuh");
                     Log.d("asdf","fuckinhell");
+
                     mActivityViewReady = true;
 //                    ActivityView myActivityView = findViewById(R.id.maps);//.startActivity(launchIntent,null);
-                    Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.android.contacts");
-
-                    mActivityView.startActivity(launchIntent,android.os.Process.myUserHandle());
+                    Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.example.automotive");
+//                    Intent tripCompIntent = new Intent(CarLauncher.this,TestComp.class);
+//                    System.out.println(tripCompIntent);
+//                    mActivityView.startActivity(launchIntent,android.os.Process.myUserHandle());
 
 
                     //startMapsInActivityView();
@@ -131,6 +151,13 @@ public class CarLauncher extends FragmentActivity {
 
     }
 
+    public void onClickBtn(View v)
+    {
+        Toast.makeText(this, "Clicked on Button", Toast.LENGTH_LONG).show();
+    }
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -138,7 +165,18 @@ public class CarLauncher extends FragmentActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.car_launcher);
-//        mActivityView  = findViewById(R.id.maps);
+        int id = getResources().getIdentifier("tokenActivityView", "id", getPackageName());
+        System.out.println("myidis: "+id);
+        if (id > 0){
+            this.mActivityView  = findViewById(id);
+            this.activityOn = true;
+        }
+         else{
+            this.activityOn = false;
+        }
+
+
+
         // Don't show the maps panel in multi window mode.
         // NOTE: CTS tests for split screen are not compatible with activity views on the default
         // activity of the launcher
@@ -200,13 +238,13 @@ public class CarLauncher extends FragmentActivity {
             }
         });
 
-        findViewById(R.id.TripComp).setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                System.out.println("woah there boris");
-                return true;
-            }
-        });
+//        findViewById(R.id.TripComp).setOnLongClickListener(new View.OnLongClickListener() {
+//            @Override
+//            public boolean onLongClick(View v) {
+//                System.out.println("woah there boris");
+//                return true;
+//            }
+//        });
 
 
         Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
@@ -246,11 +284,14 @@ public class CarLauncher extends FragmentActivity {
 
 
 
+        if (this.activityOn && this.mActivityView != null) {
 
-        if (mActivityView != null) {
 
             mActivityView.setCallback(mActivityViewCallback);
+
             System.out.println("seting callback");
+        }else{
+            System.out.println("well shit");
         }
 //        ActivityView myActivityView = findViewById(R.id.maps);//.startActivity(launchIntent,null);
 
@@ -294,9 +335,9 @@ public class CarLauncher extends FragmentActivity {
 
         Log.d(TAG, "onStart: Hello Worlddd");
         System.out.println("hello again");
-        Intent tripCompIntent = new Intent(this,TestComp.class);
+//        Intent tripCompIntent = new Intent(this,TestComp.class);
 
-        startActivity(tripCompIntent,tripCompIntent.getExtras());
+//        startActivity(tripCompIntent,tripCompIntent.getExtras());
         mIsStarted = true;
     }
 
@@ -340,6 +381,7 @@ public class CarLauncher extends FragmentActivity {
     }
 
     public void onClick(View view) {
+        System.out.println("we have ourselves a click bois: "+view.getId()+view.getClass());
         switch(view.getId()) {
             case R.id.TripComp:
                 Log.d("pressed clickity cliek","click");
