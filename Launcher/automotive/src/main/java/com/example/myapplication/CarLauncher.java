@@ -24,6 +24,7 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.util.Log;
 import android.widget.FrameLayout;
 
@@ -198,8 +199,8 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
         }
         if (mActivityView != null && getTripCompIntent()!=null ) {
 
-            mActivityView.startActivity(getTripCompIntent(), null);
-
+//            try{
+                mActivityView.startActivity(getTripCompIntent(), android.os.Binder.getCallingUserHandle());
 
         }
     }
@@ -226,14 +227,16 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
 
         Intent tripComp=new Intent(Intent.ACTION_MAIN);
         tripComp.addCategory(Intent.CATEGORY_LAUNCHER);
-        tripComp.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
-                Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
-        tripComp.setComponent(new ComponentName("com.example.automotive",
-                "com.example.carapibasics.MainActivity"));
+        tripComp.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+//        tripComp.setComponent(new ComponentName("com.example.automotive", "com.example.carapibasics.MainActivity"));
+        tripComp.setClassName("com.example.automotive",
+                "com.example.carapibasics.MainActivity");
 
       //   tripComp.putExtra("layout", R.id.tripComp);
        // int layout = getIntent().getIntExtra("layout", R.id.tripComp);
         //setContentView(findViewById(R.id.tripComp));
+
+//        return Intent.makeMainSelectorActivity(Intent.ACTION_MAIN, Intent.CATEGORY_LAUNCHER);
 
         return tripComp;
     }
