@@ -38,15 +38,18 @@ set ADB_SH=%ADB% shell
 
 :: Install APK: using adb su
 %ADB% remount
-%ADB% push %apk_host% %apk_target_sys%
+:: %ADB% push %apk_host% %apk_target_sys%
+echo Waiting for three pings until the emulator is really ready...
+ping localhost -n 6 >NUL
+ping localhost -n 6 >NUL
+ping localhost -n 6 >NUL
+%ADB% install %apk_host%
+%ADB% install ..\..\AATripComputerApp\%apk_host%
 
 :: Give permissions
-%ADB_SH% chmod 755 %apk_target_dir%
-%ADB_SH% chmod 644 %apk_target_sys%
+:: %ADB_SH% chmod 755 %apk_target_dir%
+:: %ADB_SH% chmod 644 %apk_target_sys%
 
 :: Set the appropriate shell parameters
-echo Waiting for two pings until the emulator is ready for putting variables...
-ping localhost -n 6 >NUL
-ping localhost -n 6 >NUL
 %ADB_SH% settings put global hidden_api_policy_pre_p_apps 1
 %ADB_SH% settings put global hidden_api_policy_p_apps 1
