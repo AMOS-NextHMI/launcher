@@ -23,7 +23,6 @@ call gradlew assembleDebug
 
 :: Check if emulator is already running
 for /f %%i in ('%ADB% get-state') do set ADB_OUTPUT=%%i
-@echo on
 echo Wiping and starting the emulator...
 if %ADB_OUTPUT% NEQ "device" start %emulator_path% -avd %emulator_name% -writable-system -wipe-data
 
@@ -34,7 +33,6 @@ for /f %%i in ('%ADB% get-state') do set ADB_OUTPUT=%%i
 
 if "%ADB_OUTPUT%" NEQ "device" goto waiting_loop
 
-@echo off
 set ADB_SH=%ADB% shell
 
 :: Install APK: using adb su
