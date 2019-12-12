@@ -81,51 +81,24 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/TripComp"
+
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:clickable="true"
-            android:onClick="onClick"
+
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/nameOfAppRN"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:ellipsize="end"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                />
-            <TextView
-                android:id="@+id/filledInName"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:ellipsize="end"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                />
-            <ImageView
-                android:id="@+id/iconOfApp"
-                android:layout_width="match_parent"
-                android:layout_height="350dp"
-                android:ellipsize="end"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                />
+            <ActivityView
+            android:id="@+id/tripComp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
 
         </LinearLayout>
 
 
-    <LinearLayout
 
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
-        <include android:id="@+id/tripCompLayout" layout="@layout/comp_layout" />
-
-
-
-    </LinearLayout>
 
 
 
@@ -142,12 +115,12 @@
 <!--            app:layout_constraintStart_toEndOf="@+id/start_edge"-->
 <!--            app:layout_constraintTop_toBottomOf="@+id/top_edge">-->
 <!--            <ActivityView-->
-<!--                android:id="@+id/maps"-->
-<!--                android:background="@color/green"-->
+<!--                android:id="@+id/tripComp"-->
 <!--                android:layout_width="match_parent"-->
 <!--                android:layout_height="match_parent"-->
 <!--                android:resizeableActivity="true"-->
 <!--                android:allowEmbedded="true"/>-->
+
 <!--        </androidx.cardview.widget.CardView>-->
 
 
