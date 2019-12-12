@@ -29,7 +29,6 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import java.util.Set;
-
 /**
  * Note by Wolf Lickefett: the ActivityView does not seem to be documented
  * but should exist in the android project
@@ -122,8 +121,6 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d(TAG, "onStart: Hello World");
-        mIsStarted = true;
         mIsStarted = true;
     }
 
@@ -171,7 +168,7 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
         }
         if (mActivityView != null && getTripCompIntent() != null) {
             mActivityView.startActivity(getTripCompIntent(), android.os.Binder.getCallingUserHandle());
-            Log.d("Launcher", mActivityView.getDisplay().toString());
+            Log.d(TAG, mActivityView.getDisplay().toString());
         }
     }
 
@@ -191,13 +188,12 @@ public class CarLauncher extends FragmentActivity /*implements View.OnClickListe
         Intent tripComp = new Intent(Intent.ACTION_MAIN);
         tripComp.addCategory(Intent.CATEGORY_LAUNCHER);
         tripComp.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
-//        tripComp.setComponent(new ComponentName("com.example.automotive", "com.example.carapibasics.MainActivity"));
-        tripComp.setClassName("com.example.automotive",
-                "com.example.carapibasics.MainActivity");
-        //   tripComp.putExtra("layout", R.id.tripComp);
+        // tripComp.setComponent(new ComponentName("com.example.automotive", "com.example.carapibasics.MainActivity"));
+        tripComp.setClassName("com.example.automotive", "com.example.tripcomputer.MainActivity");
+        // tripComp.putExtra("layout", R.id.tripComp);
         // int layout = getIntent().getIntExtra("layout", R.id.tripComp);
-        //setContentView(findViewById(R.id.tripComp));
-//        return Intent.makeMainSelectorActivity(Intent.ACTION_MAIN, Intent.CATEGORY_LAUNCHER);
+        // setContentView(findViewById(R.id.tripComp));
+        // return Intent.makeMainSelectorActivity(Intent.ACTION_MAIN, Intent.CATEGORY_LAUNCHER);
         return tripComp;
     }
     //    private void startMapsInActivityView() {

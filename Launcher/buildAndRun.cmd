@@ -20,6 +20,7 @@ del %apk_host%
 
 :: Compile the APK: you can adapt this for production build, flavors, etc.
 call gradlew assembleDebug
+call ..\..\AATripComputerApp\gradlew assemble
 
 :: Check if emulator is already running
 for /f %%i in ('%ADB% get-state') do set ADB_OUTPUT=%%i
@@ -43,6 +44,7 @@ ping localhost -n 6 >NUL
 ping localhost -n 6 >NUL
 ping localhost -n 6 >NUL
 %ADB% install %apk_host%
+echo %ADB% install ..\..\AATripComputerApp\%apk_host%
 %ADB% install ..\..\AATripComputerApp\%apk_host%
 
 :: Give permissions
