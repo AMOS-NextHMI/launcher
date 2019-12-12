@@ -66,6 +66,7 @@ dependencies {
 
     def leanback_version = "1.0.0"
 
+    implementation 'androidx.car:car:1.0.0-alpha7'
     implementation "androidx.leanback:leanback:$leanback_version"
     implementation "androidx.core:core-ktx:+"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0"

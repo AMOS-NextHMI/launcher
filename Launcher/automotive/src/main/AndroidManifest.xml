@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   Copyright (C) 2017 The Android Open Source Project
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,97 +15,101 @@
   -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 
-    xmlns:tools="http://schemas.android.com/tools" package="com.example.myapplication" android:sharedUserId="android.uid.system">
+	xmlns:tools="http://schemas.android.com/tools"
+	package="com.example.myapplication"
+	android:sharedUserId="android.uid.system">
 
-    <!-- System permission to get app usage data -->
-    <uses-feature
-        android:name="android.software.leanback"
-        android:required="false" />
-    <uses-feature
-        android:name="android.hardware.touchscreen"
-        android:required="false" />
-    <uses-permission android:name="android.car.permission.CAR_SPEED" />
-    <uses-permission android:name="android.car.permission.CAR_POWERTRAIN" />
-    <uses-permission android:name="android.car.permission.CAR_PERMISSION_ENERGY" />
+	<!-- System permission to get app usage data -->
+	<uses-feature
+		android:name="android.software.leanback"
+		android:required="false" />
+	<uses-feature
+		android:name="android.hardware.touchscreen"
+		android:required="false" />
 
+	<uses-permission android:name="android.car.permission.CAR_SPEED" />
+	<uses-permission android:name="android.car.permission.CAR_POWERTRAIN" />
+	<uses-permission android:name="android.car.permission.CAR_POWER" />
+	<uses-permission android:name="android.car.permission.CAR_PERMISSION_ENERGY" />
+	<uses-permission
+		android:name="android.permission.INJECT_EVENTS"
+		tools:ignore="ProtectedPermissions" />
+	<!-- System permission to get app usage data -->
+	<uses-permission
+		android:name="android.permission.PACKAGE_USAGE_STATS"
+		tools:ignore="ProtectedPermissions" />
+	<!-- System permission to send events to hosted maps activity -->
+	<uses-permission
+		android:name="android.permission.INJECT_EVENTS"
+		tools:ignore="ProtectedPermissions" />
+	<!-- System permissions to bring hosted maps activity to front on main display -->
+	<uses-permission
+		android:name="android.permission.MANAGE_ACTIVITY_STACKS"
+		tools:ignore="ProtectedPermissions" />
+	<uses-permission android:name="android.permission.REORDER_TASKS" />
+	<!-- System permission to host maps activity -->
+	<uses-permission
+		android:name="android.permission.ACTIVITY_EMBEDDING"
+		tools:ignore="ProtectedPermissions" />
+	<!-- System permission to control media playback of the active session -->
+	<uses-permission
+		android:name="android.permission.MEDIA_CONTENT_CONTROL"
+		tools:ignore="ProtectedPermissions" />
+	<!-- System permission to query users on device -->
+	<uses-permission
+		android:name="android.permission.MANAGE_USERS"
+		tools:ignore="ProtectedPermissions" />
+	<uses-permission android:name="android.car.permission.ACCESS_CAR_PROJECTION_STATUS" />
 
-    <!-- System permission to get app usage data -->
-    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
-        tools:ignore="ProtectedPermissions" />
-    <!-- System permission to send events to hosted maps activity -->
-    <uses-permission android:name="android.permission.INJECT_EVENTS"
-        tools:ignore="ProtectedPermissions" />
-    <!-- System permissions to bring hosted maps activity to front on main display -->
-    <uses-permission android:name="android.permission.MANAGE_ACTIVITY_STACKS"
-        tools:ignore="ProtectedPermissions" />
-    <uses-permission android:name="android.permission.REORDER_TASKS"/>
-    <!-- System permission to host maps activity -->
-    <uses-permission android:name="android.permission.ACTIVITY_EMBEDDING"
-        tools:ignore="ProtectedPermissions" />
-    <!-- System permission to control media playback of the active session -->
-    <uses-permission android:name="android.permission.MEDIA_CONTENT_CONTROL"
-        tools:ignore="ProtectedPermissions" />
-    <!-- System permission to query users on device -->
-    <uses-permission android:name="android.permission.MANAGE_USERS"
-        tools:ignore="ProtectedPermissions" />
-    <uses-permission android:name="android.car.permission.ACCESS_CAR_PROJECTION_STATUS"/>
+	<application
+		android:icon="@drawable/ic_launcher_home"
+		android:label="@string/app_title"
+		android:theme="@style/Theme.Launcher">
+		<activity
+			android:name="com.example.myapplication.CarLauncher"
+			android:clearTaskOnLaunch="true"
+			android:configChanges="uiMode|mcc|mnc"
+			android:launchMode="singleTask"
+			android:resizeableActivity="true"
+			android:resumeWhilePausing="true"
+			android:screenOrientation="nosensor"
+			android:stateNotNeeded="true"
+			android:windowSoftInputMode="adjustPan">
 
+			<meta-data
+				android:name="distractionOptimized"
+				android:value="true" />
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.HOME" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+			</intent-filter>
+		</activity>
 
+		<activity
+			android:name="com.example.myapplication.AppGridActivity"
+			android:launchMode="singleInstance"
+			android:noHistory="true">
+			<meta-data
+				android:name="distractionOptimized"
+				android:value="true" />
+		</activity>
 
-    <application
-        android:icon="@drawable/ic_launcher_home"
-        android:label="@string/app_title"
-        android:theme="@style/Theme.Launcher">
-        <activity
-            android:name="com.example.myapplication.CarLauncher"
-            android:configChanges="uiMode|mcc|mnc"
-            android:resizeableActivity="true"
-            android:launchMode="singleTask"
-            android:clearTaskOnLaunch="true"
-            android:stateNotNeeded="true"
-            android:resumeWhilePausing="true"
-            android:windowSoftInputMode="adjustPan"
-            android:screenOrientation="nosensor">
+		<activity
+			android:name="com.example.carapibasics.MainActivity"
+			android:launchMode="singleInstance"
+			android:noHistory="true">
+			<meta-data
+				android:name="distractionOptimized"
+				android:value="true" />
+		</activity>
 
-            <meta-data android:name="distractionOptimized" android:value="true"/>
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.HOME"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.LEANBACK_LAUNCHER"/>
-            </intent-filter>
-        </activity>
+		<receiver android:name="androidx.media.session.MediaButtonReceiver">
+			<intent-filter>
+				<action android:name="android.intent.action.MEDIA_BUTTON" />
+			</intent-filter>
+		</receiver>
 
-        <activity
-            android:name="com.example.myapplication.AppGridActivity"
-            android:launchMode="singleInstance"
-            android:noHistory="true">
-            <meta-data android:name="distractionOptimized" android:value="true"/>
-        </activity>
-
-
-        <activity
-            android:name=".TestComp"
-            android:theme="@style/Theme.AppCompat.Light"
-            android:launchMode="singleInstance"
-            android:resizeableActivity="true"
-            android:noHistory="true">
-
-            <intent-filter>
-                <action android:name="android.intent.action.LAUNCHER"/>
-            </intent-filter>
-            <meta-data android:name="distractionOptimized" android:value="true"/>
-        </activity>
-<!--        <activity-->
-<!--            android:name="com.example.myapplication.TestFile" />-->
-
-
-
-        <receiver android:name="androidx.media.session.MediaButtonReceiver" >
-            <intent-filter>
-                <action android:name="android.intent.action.MEDIA_BUTTON" />
-            </intent-filter>
-        </receiver>
-
-    </application>
+	</application>
 </manifest>
